@@ -8,20 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490593E1C55060D00B1EC79 /* AppDelegate.swift */; };
-		049059411C55060D00B1EC79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049059401C55060D00B1EC79 /* ViewController.swift */; };
-		049059441C55060D00B1EC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049059421C55060D00B1EC79 /* Main.storyboard */; };
 		049059461C55060D00B1EC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049059451C55060D00B1EC79 /* Assets.xcassets */; };
-		049059491C55060D00B1EC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049059471C55060D00B1EC79 /* LaunchScreen.storyboard */; };
+		04B554291C551228001C9D47 /* XNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554281C551228001C9D47 /* XNMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0490593B1C55060D00B1EC79 /* HsuSina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsuSina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0490593E1C55060D00B1EC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		049059401C55060D00B1EC79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		049059431C55060D00B1EC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		049059451C55060D00B1EC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		049059481C55060D00B1EC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0490594A1C55060D00B1EC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04B554281C551228001C9D47 /* XNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +51,9 @@
 			isa = PBXGroup;
 			children = (
 				0490593E1C55060D00B1EC79 /* AppDelegate.swift */,
-				049059401C55060D00B1EC79 /* ViewController.swift */,
-				049059421C55060D00B1EC79 /* Main.storyboard */,
 				049059451C55060D00B1EC79 /* Assets.xcassets */,
-				049059471C55060D00B1EC79 /* LaunchScreen.storyboard */,
 				0490594A1C55060D00B1EC79 /* Info.plist */,
+				04B554281C551228001C9D47 /* XNMainViewController.swift */,
 			);
 			path = HsuSina;
 			sourceTree = "<group>";
@@ -90,6 +84,7 @@
 		049059331C55060D00B1EC79 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = XN;
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Hsu;
@@ -122,9 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049059491C55060D00B1EC79 /* LaunchScreen.storyboard in Resources */,
 				049059461C55060D00B1EC79 /* Assets.xcassets in Resources */,
-				049059441C55060D00B1EC79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +128,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049059411C55060D00B1EC79 /* ViewController.swift in Sources */,
 				0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */,
+				04B554291C551228001C9D47 /* XNMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		049059421C55060D00B1EC79 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				049059431C55060D00B1EC79 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		049059471C55060D00B1EC79 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				049059481C55060D00B1EC79 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0490594B1C55060D00B1EC79 /* Debug */ = {
@@ -249,10 +223,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = HsuSina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsuios.HsuSina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -260,10 +237,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = HsuSina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsuios.HsuSina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -286,6 +266,7 @@
 				0490594F1C55060D00B1EC79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
