@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490593E1C55060D00B1EC79 /* AppDelegate.swift */; };
 		049059461C55060D00B1EC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049059451C55060D00B1EC79 /* Assets.xcassets */; };
-		04B554291C551228001C9D47 /* XNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554281C551228001C9D47 /* XNMainViewController.swift */; };
+		04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554351C55229A001C9D47 /* XNDiscoverTableViewController.swift */; };
+		04B554381C5522AF001C9D47 /* XNHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554371C5522AF001C9D47 /* XNHomeTableViewController.swift */; };
+		04B5543A1C5522C8001C9D47 /* XNMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554391C5522C8001C9D47 /* XNMessageTableViewController.swift */; };
+		04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */; };
+		04B5543E1C5522F2001C9D47 /* XNMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543D1C5522F2001C9D47 /* XNMainTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,7 +21,11 @@
 		0490593E1C55060D00B1EC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049059451C55060D00B1EC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0490594A1C55060D00B1EC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04B554281C551228001C9D47 /* XNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainViewController.swift; sourceTree = "<group>"; };
+		04B554351C55229A001C9D47 /* XNDiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNDiscoverTableViewController.swift; sourceTree = "<group>"; };
+		04B554371C5522AF001C9D47 /* XNHomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNHomeTableViewController.swift; sourceTree = "<group>"; };
+		04B554391C5522C8001C9D47 /* XNMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMessageTableViewController.swift; sourceTree = "<group>"; };
+		04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNProfileTableViewController.swift; sourceTree = "<group>"; };
+		04B5543D1C5522F2001C9D47 /* XNMainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,12 +58,104 @@
 		0490593D1C55060D00B1EC79 /* HsuSina */ = {
 			isa = PBXGroup;
 			children = (
+				04B5542A1C5521CA001C9D47 /* Classes */,
 				0490593E1C55060D00B1EC79 /* AppDelegate.swift */,
 				049059451C55060D00B1EC79 /* Assets.xcassets */,
 				0490594A1C55060D00B1EC79 /* Info.plist */,
-				04B554281C551228001C9D47 /* XNMainViewController.swift */,
 			);
 			path = HsuSina;
+			sourceTree = "<group>";
+		};
+		04B5542A1C5521CA001C9D47 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				04B5542B1C5521CA001C9D47 /* Mode */,
+				04B5542C1C5521CA001C9D47 /* Tools */,
+				04B5542D1C5521CA001C9D47 /* View(视图和控制器) */,
+				04B554341C5521CA001C9D47 /* ViewModel */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		04B5542B1C5521CA001C9D47 /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mode;
+			sourceTree = "<group>";
+		};
+		04B5542C1C5521CA001C9D47 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		04B5542D1C5521CA001C9D47 /* View(视图和控制器) */ = {
+			isa = PBXGroup;
+			children = (
+				04B5542E1C5521CA001C9D47 /* Discover */,
+				04B5542F1C5521CA001C9D47 /* Home */,
+				04B554301C5521CA001C9D47 /* Main */,
+				04B554321C5521CA001C9D47 /* Message */,
+				04B554331C5521CA001C9D47 /* Profile */,
+			);
+			path = "View(视图和控制器)";
+			sourceTree = "<group>";
+		};
+		04B5542E1C5521CA001C9D47 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				04B554351C55229A001C9D47 /* XNDiscoverTableViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		04B5542F1C5521CA001C9D47 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				04B554371C5522AF001C9D47 /* XNHomeTableViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		04B554301C5521CA001C9D47 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				04B554311C5521CA001C9D47 /* Visitor */,
+				04B5543D1C5522F2001C9D47 /* XNMainTableViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		04B554311C5521CA001C9D47 /* Visitor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Visitor;
+			sourceTree = "<group>";
+		};
+		04B554321C5521CA001C9D47 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				04B554391C5522C8001C9D47 /* XNMessageTableViewController.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		04B554331C5521CA001C9D47 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		04B554341C5521CA001C9D47 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B5543A1C5522C8001C9D47 /* XNMessageTableViewController.swift in Sources */,
+				04B554381C5522AF001C9D47 /* XNHomeTableViewController.swift in Sources */,
 				0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */,
-				04B554291C551228001C9D47 /* XNMainViewController.swift in Sources */,
+				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
+				04B5543E1C5522F2001C9D47 /* XNMainTableViewController.swift in Sources */,
+				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
