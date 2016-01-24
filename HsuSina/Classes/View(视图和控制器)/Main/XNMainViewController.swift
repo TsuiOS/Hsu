@@ -15,11 +15,46 @@ class XNMainViewController: UITabBarController {
 
         addChildViewControllers()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        setuoComposeButton()
+    }
+    
+    // MARK : 懒加载
+    private lazy var composedButton: UIButton = {
+    
+        //自定义样式的按钮
+        let button = UIButton()
+        
+        button.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: UIControlState.Highlighted)
+        button.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: UIControlState.Normal)
+        button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: UIControlState.Highlighted)
+        button.sizeToFit()
+        
+        return button
+ 
+    }()
 }
 
 // MARK: - 设置界面
 extension XNMainViewController {
+    
+/// 设置撰写按钮
+    private func setuoComposeButton() {
+    
+        //1.添加按钮
+        tabBar.addSubview(composedButton)
+        // 调整按钮
+        let count = childViewControllers.count
+        
+        let w = tabBar.bounds.width / CGFloat(count) - 1
+        
+        
+        composedButton.frame = CGRectInset(tabBar.bounds, 2 * w, 0)
+    
+    
+    }
 
     /// 添加所有的控制器
     private func addChildViewControllers() {
@@ -28,7 +63,9 @@ extension XNMainViewController {
         addChildViewController(XNHomeTableViewController(), title: "首页", imageName: "tabbar_home")
         
         addChildViewController(XNMessageTableViewController(), title: "消息", imageName: "tabbar_message_center")
-
+        
+        addChildViewController(UIViewController())
+        
         addChildViewController(XNDiscoverTableViewController(), title: "发现", imageName: "tabbar_discover")
 
         addChildViewController(XNProfileTableViewController(), title: "我", imageName: "tabbar_profile")
