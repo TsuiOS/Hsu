@@ -21,20 +21,10 @@ class XNMainViewController: UITabBarController {
     }
     
     // MARK : 懒加载
-    private lazy var composedButton: UIButton = {
-    
-        //自定义样式的按钮
-        let button = UIButton()
-        
-        button.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: UIControlState.Normal)
-        button.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: UIControlState.Highlighted)
-        button.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: UIControlState.Normal)
-        button.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: UIControlState.Highlighted)
-        button.sizeToFit()
-        
-        return button
- 
-    }()
+    private lazy var composedButton: UIButton = UIButton(
+        imageName: "tabbar_compose_icon_add",
+        backgroundImageName: "tabbar_compose_button"
+    )
 }
 
 // MARK: - 设置界面

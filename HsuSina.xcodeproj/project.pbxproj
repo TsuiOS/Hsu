@@ -14,6 +14,7 @@
 		04B5543A1C5522C8001C9D47 /* XNMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554391C5522C8001C9D47 /* XNMessageTableViewController.swift */; };
 		04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */; };
 		04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543F1C552477001C9D47 /* XNMainViewController.swift */; };
+		04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554441C552EC8001C9D47 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		04B554391C5522C8001C9D47 /* XNMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMessageTableViewController.swift; sourceTree = "<group>"; };
 		04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNProfileTableViewController.swift; sourceTree = "<group>"; };
 		04B5543F1C552477001C9D47 /* XNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainViewController.swift; sourceTree = "<group>"; };
+		04B554441C552EC8001C9D47 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +71,9 @@
 		04B5542A1C5521CA001C9D47 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				04B5542D1C5521CA001C9D47 /* View(视图和控制器) */,
 				04B5542B1C5521CA001C9D47 /* Mode */,
 				04B5542C1C5521CA001C9D47 /* Tools */,
-				04B5542D1C5521CA001C9D47 /* View(视图和控制器) */,
 				04B554341C5521CA001C9D47 /* ViewModel */,
 			);
 			path = Classes;
@@ -87,6 +89,7 @@
 		04B5542C1C5521CA001C9D47 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04B554411C552E6E001C9D47 /* Extension */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -156,6 +159,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04B554411C552E6E001C9D47 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04B554441C552EC8001C9D47 /* UIButton+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */,
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
+				04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
