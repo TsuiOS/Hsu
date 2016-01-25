@@ -14,13 +14,17 @@ class XNVisitorTableViewController: UITableViewController {
     private var userLogin = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        // 验证访客视图思路
-//        view = UIView()
-//        view.backgroundColor = UIColor.orangeColor()
+        //根据用户登录情况,决定显示的视图
+        userLogin ? super.viewDidLoad() : setupVisitorView()
         
     }
-
+    ///  设置访客视图
+    private func setupVisitorView() {
+    
+        //替换视图
+        view = XNVisitorView()
+        
+    }
     
 }
