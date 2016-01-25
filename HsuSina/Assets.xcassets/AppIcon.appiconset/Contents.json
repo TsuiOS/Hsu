@@ -6,9 +6,8 @@
       "scale" : "1x"
     },
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "icon_os7@2x.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
@@ -17,9 +16,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "icon.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {

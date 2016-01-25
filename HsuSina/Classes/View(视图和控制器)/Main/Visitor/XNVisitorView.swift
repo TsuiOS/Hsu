@@ -7,10 +7,31 @@
 //
 
 import UIKit
+///  访客视图的协议
+protocol XNVisitorViewDelegate: NSObjectProtocol {
+    /// 注册
+    func visitorViewDidRegister()
+    ///登录
+    func visitorViewDidLogin()
+
+}
 
 /// 访客视图
 class XNVisitorView: UIView {
     
+    /// 代理
+    weak var delegate: XNVisitorViewDelegate?
+    
+    // MARK : - 监听方法
+    @objc private func clickLogin() {
+        delegate?.visitorViewDidLogin()
+    }
+    @objc private func clickRegister() {
+        delegate?.visitorViewDidRegister()
+    }
+    
+    
+    // MARK : - 设置视图信息
     ///  设置视图信息
     ///
     ///  - parameter imageName: 图片的名字,如果为nil 说明是首页
@@ -145,6 +166,11 @@ extension XNVisitorView {
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[mask]-(btnHeight)-[regButton]", options: [], metrics: ["btnHeight": -36], views: ["mask": maskIconView,"regButton": registerButton]))
         //设置背景颜色
         backgroundColor = UIColor(white: 237.0 / 255, alpha: 1.0)
+        
+        // 添加监听方法
+        registerButton.addTarget(self, action: "clickRegister", forControlEvents: .TouchUpInside)
+        
+        loginButton.addTarget(self, action: "clickLogin", forControlEvents: .TouchUpInside)
         
     }
 
