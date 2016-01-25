@@ -8,7 +8,8 @@
 
 import UIKit
 
-class XNHomeTableViewController: UITableViewController {
+class XNHomeTableViewController: XNVisitorTableViewController {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
