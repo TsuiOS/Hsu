@@ -13,6 +13,8 @@ class XNVisitorTableViewController: UITableViewController {
     //用户登录标记
     private var userLogin = false
     
+    var visitorView: XNVisitorView?
+    
     override func viewDidLoad() {
         
         //根据用户登录情况,决定显示的视图
@@ -23,7 +25,8 @@ class XNVisitorTableViewController: UITableViewController {
     private func setupVisitorView() {
     
         //替换视图
-        view = XNVisitorView()
+        visitorView = XNVisitorView()
+        view = visitorView
         
     }
     

@@ -11,6 +11,26 @@ import UIKit
 /// 访客视图
 class XNVisitorView: UIView {
     
+    ///  设置视图信息
+    ///
+    ///  - parameter imageName: 图片的名字,如果为nil 说明是首页
+    ///  - parameter title:     消息文字
+    func setupInfo(imageName: String?, title: String) {
+    
+         messageLable.text = title
+        
+        // 如果图片名为nil 说明是首页 直接返回
+        guard let imgName = imageName else {
+            return
+        }
+        iconView.image = UIImage(named: imgName)
+        //隐藏小房子
+        homeIconView.hidden = true
+        //将遮罩移动到底层
+        sendSubviewToBack(maskIconView)
+    
+    }
+    
     //initWithFrame 是 UIView 的指定构造函数
     //使用纯代码开发使用
     override init(frame: CGRect) {
@@ -41,6 +61,7 @@ class XNVisitorView: UIView {
         lable.textColor = UIColor.darkGrayColor()
         lable.font = UIFont.systemFontOfSize(14)
         lable.numberOfLines = 0
+        lable.textAlignment = NSTextAlignment.Center
 
         return lable
     }()
@@ -103,7 +124,7 @@ extension XNVisitorView {
         addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Top, relatedBy: .Equal, toItem: iconView, attribute: .Bottom, multiplier: 1.0, constant: 16))
         //设置lable 的宽高
         addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 224))
-        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 16))
+        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 36))
         //4. 注册按钮
         addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Left, relatedBy: .Equal, toItem: messageLable, attribute: .Left, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Top, relatedBy: .Equal, toItem: messageLable, attribute: .Bottom, multiplier: 1.0, constant: 16))

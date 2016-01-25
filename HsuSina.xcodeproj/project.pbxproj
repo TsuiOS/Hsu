@@ -102,9 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				04B554301C5521CA001C9D47 /* Main */,
-				04B5542E1C5521CA001C9D47 /* Discover */,
 				04B5542F1C5521CA001C9D47 /* Home */,
 				04B554321C5521CA001C9D47 /* Message */,
+				04B5542E1C5521CA001C9D47 /* Discover */,
 				04B554331C5521CA001C9D47 /* Profile */,
 			);
 			path = "View(视图和控制器)";
