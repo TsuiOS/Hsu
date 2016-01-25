@@ -7,28 +7,9 @@
 //
 
 import UIKit
-///  访客视图的协议
-protocol XNVisitorViewDelegate: NSObjectProtocol {
-    /// 注册
-    func visitorViewDidRegister()
-    ///登录
-    func visitorViewDidLogin()
-
-}
 
 /// 访客视图
 class XNVisitorView: UIView {
-    
-    /// 代理
-    weak var delegate: XNVisitorViewDelegate?
-    
-    // MARK : - 监听方法
-    @objc private func clickLogin() {
-        delegate?.visitorViewDidLogin()
-    }
-    @objc private func clickRegister() {
-        delegate?.visitorViewDidRegister()
-    }
     
     
     // MARK : - 设置视图信息
@@ -97,10 +78,10 @@ class XNVisitorView: UIView {
     private lazy var messageLable: UILabel = UILabel(title: "关注一些人，回这里看看有什么惊喜")
     
     /// 注册按钮
-    private lazy var registerButton: UIButton = UIButton(title: "注册", color: UIColor.orangeColor(), imageName: "common_button_white_disable")
+    lazy var registerButton: UIButton = UIButton(title: "注册", color: UIColor.orangeColor(), imageName: "common_button_white_disable")
     
     /// 登录按钮
-    private lazy var loginButton: UIButton = UIButton(title: "登录", color: UIColor.darkGrayColor(), imageName: "common_button_white_disable")
+    lazy var loginButton: UIButton = UIButton(title: "登录", color: UIColor.darkGrayColor(), imageName: "common_button_white_disable")
 
 
 }
@@ -167,10 +148,6 @@ extension XNVisitorView {
         //设置背景颜色
         backgroundColor = UIColor(white: 237.0 / 255, alpha: 1.0)
         
-        // 添加监听方法
-        registerButton.addTarget(self, action: "clickRegister", forControlEvents: .TouchUpInside)
-        
-        loginButton.addTarget(self, action: "clickLogin", forControlEvents: .TouchUpInside)
         
     }
 

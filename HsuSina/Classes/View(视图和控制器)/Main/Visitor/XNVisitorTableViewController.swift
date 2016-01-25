@@ -26,22 +26,22 @@ class XNVisitorTableViewController: UITableViewController {
     
         //替换视图
         visitorView = XNVisitorView()
-        
-        //设置代理
-        visitorView?.delegate = self
         view = visitorView
+        visitorView?.registerButton.addTarget(self, action: "visitorViewDidRegister", forControlEvents: .TouchUpInside)
+        visitorView?.loginButton.addTarget(self, action: "visitorViewDidLogin", forControlEvents: .TouchUpInside)
         
     }
     
 }
 
 // MARK: - 访客视图监听方法
-extension XNVisitorTableViewController: XNVisitorViewDelegate {
+extension XNVisitorTableViewController {
 
+    ///  注册
     func visitorViewDidRegister() {
         print("注册")
     }
-    
+    ///  登录
     func visitorViewDidLogin() {
         print("登录")
     }
