@@ -21,6 +21,7 @@ class XNVisitorView: UIView {
         
         // 如果图片名为nil 说明是首页 直接返回
         guard let imgName = imageName else {
+            startAnimation()
             return
         }
         iconView.image = UIImage(named: imgName)
@@ -31,6 +32,23 @@ class XNVisitorView: UIView {
     
     }
     
+    ///  开始动画
+    private func startAnimation() {
+        
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
+        //设置动画属性
+        anim.toValue = 2 * M_PI
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 20
+        
+        //当控件销毁时, 动画才会一起销毁
+        anim.removedOnCompletion = false
+        
+        iconView.layer.addAnimation(anim, forKey: nil)
+    
+    }
+    
+    // MARK : - 构造函数
     //initWithFrame 是 UIView 的指定构造函数
     //使用纯代码开发使用
     override init(frame: CGRect) {
