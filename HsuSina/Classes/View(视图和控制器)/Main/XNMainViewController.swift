@@ -44,8 +44,7 @@ extension XNMainViewController {
 
     /// 添加所有的控制器
     private func addChildViewControllers() {
-        //设置tintColor 
-        tabBar.tintColor = UIColor.orangeColor()
+       
         addChildViewController(XNHomeTableViewController(), title: "首页", imageName: "tabbar_home")
         
         addChildViewController(XNMessageTableViewController(), title: "消息", imageName: "tabbar_message_center")

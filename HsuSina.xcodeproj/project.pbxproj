@@ -19,6 +19,7 @@
 		04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */; };
 		04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543F1C552477001C9D47 /* XNMainViewController.swift */; };
 		04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554441C552EC8001C9D47 /* UIButton+Extension.swift */; };
+		04D7DAEF1C56768500D74194 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D7DAEE1C56768500D74194 /* Common.swift */; };
 		0DDA5977997DBCD79840A129 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C0A1525B40FE9160B0E94F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		04B5543B1C5522DC001C9D47 /* XNProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNProfileTableViewController.swift; sourceTree = "<group>"; };
 		04B5543F1C552477001C9D47 /* XNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainViewController.swift; sourceTree = "<group>"; };
 		04B554441C552EC8001C9D47 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		04D7DAEE1C56768500D74194 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		0B6C504117CF5DEC64649093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		24C0A1525B40FE9160B0E94F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77ADCA5D4572680FE1B97C54 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				04B554411C552E6E001C9D47 /* Extension */,
+				04D7DAEE1C56768500D74194 /* Common.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				04B554381C5522AF001C9D47 /* XNHomeTableViewController.swift in Sources */,
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,
 				0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */,
+				04D7DAEF1C56768500D74194 /* Common.swift in Sources */,
 				0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */,
 				0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */,
 				04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */,

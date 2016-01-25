@@ -27,8 +27,14 @@ class XNVisitorTableViewController: UITableViewController {
         //替换视图
         visitorView = XNVisitorView()
         view = visitorView
+        
+        //添加监听方法
         visitorView?.registerButton.addTarget(self, action: "visitorViewDidRegister", forControlEvents: .TouchUpInside)
         visitorView?.loginButton.addTarget(self, action: "visitorViewDidLogin", forControlEvents: .TouchUpInside)
+        
+        //设置导航栏按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "visitorViewDidRegister")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "visitorViewDidLogin")
         
     }
     
