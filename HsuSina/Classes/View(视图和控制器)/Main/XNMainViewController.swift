@@ -17,7 +17,7 @@ class XNMainViewController: UITabBarController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        setuoComposeButton()
+        setupComposeButton()
     }
     
     // MARK : 懒加载
@@ -31,19 +31,15 @@ class XNMainViewController: UITabBarController {
 extension XNMainViewController {
     
 /// 设置撰写按钮
-    private func setuoComposeButton() {
+    private func setupComposeButton() {
     
         //1.添加按钮
         tabBar.addSubview(composedButton)
         // 调整按钮
         let count = childViewControllers.count
-        
         let w = tabBar.bounds.width / CGFloat(count) - 1
-        
-        
         composedButton.frame = CGRectInset(tabBar.bounds, 2 * w, 0)
-    
-    
+ 
     }
 
     /// 添加所有的控制器
