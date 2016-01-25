@@ -66,44 +66,21 @@ class XNVisitorView: UIView {
     }
     // MARK : - 懒加载控件
     ///  图标
-    private lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
+    private lazy var iconView: UIImageView = UIImageView(imageName: "visitordiscover_feed_image_smallicon")
+    
     ///遮罩图像
-    private lazy var maskIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    private lazy var maskIconView: UIImageView = UIImageView(imageName: "visitordiscover_feed_mask_smallicon")
     /// 房子
     private lazy var homeIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     /// 消息文字
-    private lazy var messageLable: UILabel = {
-        let lable = UILabel()
-        lable.text = "关注一些人，回这里看看有什么惊喜"
-        // 界面设计上,避免使用纯黑色
-        lable.textColor = UIColor.darkGrayColor()
-        lable.font = UIFont.systemFontOfSize(14)
-        lable.numberOfLines = 0
-        lable.textAlignment = NSTextAlignment.Center
-
-        return lable
-    }()
+    private lazy var messageLable: UILabel = UILabel(title: "关注一些人，回这里看看有什么惊喜")
     
     /// 注册按钮
-    private lazy var registerButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("注册", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-        
-        button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
-        return button
-    }()
+    private lazy var registerButton: UIButton = UIButton(title: "注册", color: UIColor.orangeColor(), imageName: "common_button_white_disable")
+    
     /// 登录按钮
-    private lazy var loginButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("登录", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        
-        button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState: UIControlState.Normal)
-        return button
-    }()
+    private lazy var loginButton: UIButton = UIButton(title: "登录", color: UIColor.darkGrayColor(), imageName: "common_button_white_disable")
+
 
 }
 
