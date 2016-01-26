@@ -22,6 +22,8 @@ class NetworkTools: AFHTTPSessionManager {
     private let appKey = "2344169185"
     private let appSecret = "11a8007451fb9ce6a12b5da7d98bee99"
     private let redirectUrl = "http://www.baidu.com"
+    
+    typealias XNRequesCallBack = (result: AnyObject?, error: NSError?)->()
 
     // 单例
     static let sharedTools: NetworkTools = {
@@ -49,8 +51,8 @@ extension NetworkTools {
     ///
     ///  - parameter code:     授权码
     ///  - parameter finished: 完成的回调
-    /// - see [http://open.weibo.com/wiki/OAuth2/access_token](http://open.weibo.com/wiki/OAuth2/access_token)
-    func loadAccessToken(code: String, finished: (result: AnyObject?, error: NSError?)->())
+    /// - see [http://open.weibo.com/wiki/OAuth2/access_token](http://open.weibo.com/wiki/OAuth2/access_token)\
+    func loadAccessToken(code: String, finished: XNRequesCallBack)
     {
         
         let urlString = "https://api.weibo.com/oauth2/access_token"
@@ -74,7 +76,7 @@ extension NetworkTools {
     /// - parameter URLString:  URLString
     /// - parameter parameters: 参数字典
     /// - parameter finished:   完成回调
-    func request(method: XNRequestMethod, URLString: String, parameters: [String: AnyObject]?, finished: (result: AnyObject?, error: NSError?)->()) {
+    func request(method: XNRequestMethod, URLString: String, parameters: [String: AnyObject]?, finished: XNRequesCallBack) {
         
         // 定义成功回调
         let success = { (task: NSURLSessionDataTask?, result: AnyObject?) -> Void in
