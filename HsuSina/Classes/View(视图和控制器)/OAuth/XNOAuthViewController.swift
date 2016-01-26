@@ -63,7 +63,7 @@ extension XNOAuthViewController: UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         //1.判断访问的主机是否是tsuios.applinzi.com
-        guard let url = request.URL where url.host == "tsuios.applinzi.com" else {
+        guard let url = request.URL where url.host == "www.baidu.com" else {
         
             return true
         }
@@ -80,9 +80,19 @@ extension XNOAuthViewController: UIWebViewDelegate {
         //b7df9c2654d71987d8f9f6745b43642e
         print("授权码是 " + code)
         
+        //4.加载 accessToken
+        NetworkTools.sharedTools.loadAccessToken(code) { (result, error) -> () in
+            //判断错误
+            if error != nil {
+                print("授权失败")
+                return
+            }
+            
+            print(result)
+        }
+
         return false
         
     }
-
 
 }
