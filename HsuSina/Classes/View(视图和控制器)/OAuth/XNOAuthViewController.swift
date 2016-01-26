@@ -87,8 +87,10 @@ extension XNOAuthViewController: UIWebViewDelegate {
                 print("授权失败")
                 return
             }
-            
             print(result)
+            let account = UserAccount(dict: result as! [String: AnyObject])
+            print(account)
+            
         }
 
         return false
