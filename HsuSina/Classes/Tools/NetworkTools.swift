@@ -36,6 +36,28 @@ class NetworkTools: AFHTTPSessionManager {
         return tools
     }()
 }
+// MARK: - 用户相关的方法
+extension NetworkTools {
+
+    ///  加载用户信息
+    ///
+    ///  - parameter uid:         需要查询的用户ID
+    ///  - parameter accessToken: 采用OAuth授权方式为必填参数，OAuth授权后获得
+    ///  - parameter finished:    完成后的回调
+    ///- see [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
+    /// 参数uid与screen_name二者必选其一，且只能选其一
+    func loadUserInfo(uid: String, accessToken: String, finished: XNRequesCallBack) {
+    
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        
+        let params = ["uid": uid, "access_token": accessToken]
+        
+        request(.GET, URLString: urlString, parameters: params, finished: finished)
+    
+    }
+
+}
+
 // MARK: - OAuth相关方法
 extension NetworkTools {
     

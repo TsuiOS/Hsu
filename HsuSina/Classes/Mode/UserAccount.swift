@@ -20,7 +20,15 @@ class UserAccount: NSObject {
     /// 用于调用access_token，接口获取授权后的access token
     var access_token: String?
     /// access_token的生命周期，单位是秒数
-    var expires_in: NSTimeInterval = 0
+    var expires_in: NSTimeInterval = 0 {
+        //一旦从服务器获取到过期时间,就立刻计算准确的日期
+        didSet {
+            //计算过期日期
+            expiresDate = NSDate(timeIntervalSinceNow: expires_in)
+        
+        }
+    }
+    var expiresDate: NSDate?
     /// 当前授权用户的UID
     var uid: String?
     
@@ -33,7 +41,7 @@ class UserAccount: NSObject {
     
     override var description: String {
         
-        let keys = ["access_token", "expires_in", "uid"]
+        let keys = ["access_token", "expires_in","expiresDate", "uid"]
         
         return dictionaryWithValuesForKeys(keys).description
     }

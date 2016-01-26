@@ -87,14 +87,35 @@ extension XNOAuthViewController: UIWebViewDelegate {
                 print("授权失败")
                 return
             }
-            print(result)
             let account = UserAccount(dict: result as! [String: AnyObject])
-            print(account)
+            self.loadUserInfo(account)
             
         }
 
         return false
         
+    }
+    ///  加载用户信息
+    private func loadUserInfo(account: UserAccount) {
+        
+        NetworkTools.sharedTools.loadUserInfo(account.uid!, accessToken: account.access_token!) { (result, error) -> () in
+            if error != nil {
+                print("加载用户出错了")
+                
+                return
+            }
+            guard let dict = result as? [String: AnyObject] else {
+                print("格式错误")
+                
+                return
+            }
+            
+            // dict 一定是一个有值的字典
+            print(dict["screen_name"])
+            print(dict["avatar_large"])
+        }
+    
+    
     }
 
 }
