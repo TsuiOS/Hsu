@@ -87,7 +87,7 @@ class XNVisitorView: UIView {
 }
 
 extension XNVisitorView {
-    ///  设置界面
+    /// 设置界面
     private func setupUI() {
     
         //1.添加控件
