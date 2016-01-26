@@ -19,9 +19,9 @@ enum XNRequestMethod: String {
 class NetworkTools: AFHTTPSessionManager {
     
     // MARK: - 应用程序信息
-    private let appKey = "3863118655"
-    private let appSecret = "b94c088ad2cdae8c3b9641852359d28c"
-    private let redirectUrl = "http://www.baidu.com"
+    private let appKey = "2344169185"
+    private let appSecret = "11a8007451fb9ce6a12b5da7d98bee99"
+    private let redirectUrl = "http://tsuios.applinzi.com/"
 
     // 单例
     static let sharedTools: NetworkTools = {
@@ -42,12 +42,11 @@ extension NetworkTools {
     var oauthURL: NSURL {
         
         let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
-        
         return NSURL(string: urlString)!
+        
     }
-
-
 }
+
 // MARK: - 封装 AFN 网络方法
 extension NetworkTools {
     

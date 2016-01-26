@@ -19,12 +19,21 @@ class XNOAuthViewController: UIViewController {
     
         dismissViewControllerAnimated(true, completion: nil)
     }
+    ///  自动填充用户名和密码
+    @objc private func autoFill() {
+        
+        let js = "document.getElementById('userId').value = '957430432@qq.com';" +
+        "document.getElementById('passwd').value = '13280459899';"
+        // 让 webView 执行 js
+        webView.stringByEvaluatingJavaScriptFromString(js)
+    }
     
     // MARK : - 设置界面
     override func loadView() {
         view = webView
         title = "登录新浪微博"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .Plain, target: self, action: "close")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动登录", style: .Plain, target: self, action: "autoFill")
     }
     
     override func viewDidLoad() {
