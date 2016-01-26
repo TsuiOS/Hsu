@@ -21,7 +21,7 @@ class NetworkTools: AFHTTPSessionManager {
     // MARK: - 应用程序信息
     private let appKey = "2344169185"
     private let appSecret = "11a8007451fb9ce6a12b5da7d98bee99"
-    private let redirectUrl = "http://tsuios.applinzi.com/"
+    private let redirectUrl = "http://tsuios.applinzi.com"
 
     // 单例
     static let sharedTools: NetworkTools = {
