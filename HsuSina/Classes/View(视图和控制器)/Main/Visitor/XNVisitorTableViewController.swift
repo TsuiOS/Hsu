@@ -49,6 +49,10 @@ extension XNVisitorTableViewController {
     }
     ///  登录
     func visitorViewDidLogin() {
-        print("登录")
+        let vc = XNOAuthViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        presentViewController(nav, animated: true, completion: nil)
+        
+        
     }
 }
