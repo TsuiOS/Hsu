@@ -50,7 +50,45 @@ class UserAccount: NSObject {
         return dictionaryWithValuesForKeys(keys).description
     }
     
+    // MARK : - 保存当前对象
+    func saveUserAccount() {
+        //1. 保存路径
+        var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last!
+        
+        path = (path as NSString).stringByAppendingPathComponent("account.plist")
+        
+        print(path)
+        // 归档保存
+        NSKeyedArchiver.archiveRootObject(self, toFile: path)
     
+    }
+    // MARK : - 归档和解档
+    ///  归档
+    ///
+    ///  - parameter aCoder: 编码器
+    func encodeWithCoder(aCoder: NSCoder) {
     
+        aCoder.encodeObject(access_token, forKey: "access_token")
+        aCoder.encodeObject(expiresDate, forKey: "expiresDate")
+        aCoder.encodeObject(uid, forKey: "uid")
+        aCoder.encodeObject(screen_name, forKey: "screen_name")
+        aCoder.encodeObject(avatar_large, forKey: "avatar_large")
+        
+    
+    }
+    ///  解档
+    ///
+    ///  - parameter aDecoder: 解码器
+    ///
+    ///  - returns: 当前对象
+    required init(coder aDecoder: NSCoder) {
+    
+        access_token = aDecoder.decodeObjectForKey("access_token") as? String
+        expiresDate = aDecoder.decodeObjectForKey("expiresDate") as? NSDate
+        uid = aDecoder.decodeObjectForKey("uid") as? String
+        screen_name = aDecoder.decodeObjectForKey("screen_name") as? String
+        avatar_large = aDecoder.decodeObjectForKey("avatar_large") as? String
 
+    }
+    
 }

@@ -8,10 +8,6 @@
 
 import UIKit
 
-//测试 master
-
- //测试分子 hsu127
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         
-        window?.rootViewController = XNWelcomeViewController()
+        window?.rootViewController = XNMainViewController()
         
         window?.makeKeyAndVisible()
         
@@ -33,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NetworkTools.sharedTools.request(.POST, URLString: "http:httpbin.org/post", parameters: ["name": "wangwu"]) { (result, error) -> () in
 //            print(result)
 //        }
-        
+        //测试归档的用户信息
+//        print(UserAccountViewModel())
         
         return true
     }

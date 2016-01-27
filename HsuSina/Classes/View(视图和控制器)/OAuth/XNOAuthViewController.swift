@@ -115,6 +115,9 @@ extension XNOAuthViewController: UIWebViewDelegate {
             account.screen_name = dict["screen_name"] as? String
             account.avatar_large = dict["avatar_large"] as? String
             print(account)
+            
+            //保存对象
+            account.saveUserAccount()
         }
     
     
