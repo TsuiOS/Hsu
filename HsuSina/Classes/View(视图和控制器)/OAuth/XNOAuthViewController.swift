@@ -111,8 +111,10 @@ extension XNOAuthViewController: UIWebViewDelegate {
             }
             
             // dict 一定是一个有值的字典
-            print(dict["screen_name"])
-            print(dict["avatar_large"])
+            //保存用户信息
+            account.screen_name = dict["screen_name"] as? String
+            account.avatar_large = dict["avatar_large"] as? String
+            print(account)
         }
     
     
