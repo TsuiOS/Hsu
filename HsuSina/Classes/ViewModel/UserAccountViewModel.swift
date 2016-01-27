@@ -18,6 +18,13 @@ class UserAccountViewModel {
     ///  用户模型
     var account: UserAccount?
     
+    /// 用户登录标识
+    var userLogon: Bool {
+        
+        //token 有值 并且没有过期
+        return account?.access_token != nil && !isExpired
+    }
+    
     /// 归档保存的路径
     private var accountPath: String {
         
@@ -54,7 +61,7 @@ class UserAccountViewModel {
             account = nil
         }
         
-        print(account)
+//        print(account)
     
     }
     

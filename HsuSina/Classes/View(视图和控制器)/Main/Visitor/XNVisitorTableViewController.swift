@@ -11,7 +11,7 @@ import UIKit
 class XNVisitorTableViewController: UITableViewController {
 
     //用户登录标记
-    private var userLogin = false
+    private var userLogin = UserAccountViewModel.sharedUserAccount.userLogon
     
     var visitorView: XNVisitorView?
     

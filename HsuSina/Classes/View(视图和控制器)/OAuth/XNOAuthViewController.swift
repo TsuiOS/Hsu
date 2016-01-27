@@ -78,7 +78,7 @@ extension XNOAuthViewController: UIWebViewDelegate {
         let code = query.substringFromIndex("code=".endIndex)
         print(query)
         //b7df9c2654d71987d8f9f6745b43642e
-        print("授权码是 " + code)
+//        print("授权码是 " + code)
         
         //4.加载 accessToken
         NetworkTools.sharedTools.loadAccessToken(code) { (result, error) -> () in
@@ -114,7 +114,7 @@ extension XNOAuthViewController: UIWebViewDelegate {
             //保存用户信息
             account.screen_name = dict["screen_name"] as? String
             account.avatar_large = dict["avatar_large"] as? String
-            print(account)
+//            print(account)
             
             //保存对象
             account.saveUserAccount()
