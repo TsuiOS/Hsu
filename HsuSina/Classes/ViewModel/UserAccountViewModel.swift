@@ -26,12 +26,33 @@ class UserAccountViewModel {
         return (path as NSString).stringByAppendingPathComponent("account.plist")
     
     }
+    ///  判断账户是否过期
+    private var isExpired: Bool {
+        
+        //过期时间和当前系统时间比较   降序 说明过期时间大  即没有过期
+        if account?.expiresDate?.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+            
+            return false
+        }
+        
+        //过期返回 true
+        return true
+    
+    }
     
     ///  构造函数
     init() {
     
         // 从沙盒解档数据，恢复当前数据
         account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? UserAccount
+        
+        // 判断 token 是否过期
+        if isExpired {
+            print("已经过期")
+            
+            //如果过期,清空接档数据
+            account = nil
+        }
         
         print(account)
     
