@@ -78,49 +78,22 @@ extension XNOAuthViewController: UIWebViewDelegate {
         let code = query.substringFromIndex("code=".endIndex)
         print(query)
         //b7df9c2654d71987d8f9f6745b43642e
-//        print("授权码是 " + code)
+        //print("授权码是 " + code)
         
-        //4.加载 accessToken
-        NetworkTools.sharedTools.loadAccessToken(code) { (result, error) -> () in
-            //判断错误
-            if error != nil {
+        //4. 加载 accessToken
+        UserAccountViewModel.sharedUserAccount.loadAccessToken(code) { (isSuccessed) -> () in
+            if isSuccessed {
+                print("OK")
+                print(UserAccountViewModel.sharedUserAccount.account)
+            } else {
+            
                 print("授权失败")
-                return
             }
-            let account = UserAccount(dict: result as! [String: AnyObject])
-            self.loadUserInfo(account)
             
         }
-
+        
         return false
         
-    }
-    ///  加载用户信息
-    private func loadUserInfo(account: UserAccount) {
-        
-        NetworkTools.sharedTools.loadUserInfo(account.uid!, accessToken: account.access_token!) { (result, error) -> () in
-            if error != nil {
-                print("加载用户出错了")
-                
-                return
-            }
-            guard let dict = result as? [String: AnyObject] else {
-                print("格式错误")
-                
-                return
-            }
-            
-            // dict 一定是一个有值的字典
-            //保存用户信息
-            account.screen_name = dict["screen_name"] as? String
-            account.avatar_large = dict["avatar_large"] as? String
-//            print(account)
-            
-            //保存对象
-            account.saveUserAccount()
-        }
-    
-    
     }
 
 }

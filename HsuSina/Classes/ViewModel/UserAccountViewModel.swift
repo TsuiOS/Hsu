@@ -71,3 +71,59 @@ class UserAccountViewModel {
     }
     
 }
+
+// MARK: - 用户账户相关的网络方法
+extension UserAccountViewModel {
+    
+    func loadAccessToken(code :String, finished:(isSuccessed: Bool) -> ()) {
+        //4.加载 accessToken
+        NetworkTools.sharedTools.loadAccessToken(code) { (result, error) -> () in
+            //判断错误
+            if error != nil {
+                print("授权失败")
+                //失败的回调
+                finished(isSuccessed: false)
+                return
+            }
+            self.account = UserAccount(dict: result as! [String: AnyObject])
+            self.loadUserInfo(self.account!,finished: finished)
+            
+        }
+    }
+    ///   加载用户信息
+    ///
+    ///  - parameter account: 用户账户对象
+    private func loadUserInfo(account: UserAccount, finished:(isSuccessed: Bool) -> ()) {
+        
+        NetworkTools.sharedTools.loadUserInfo(account.uid!, accessToken: account.access_token!) { (result, error) -> () in
+            if error != nil {
+                print("加载用户出错了")
+                finished(isSuccessed: false)
+                return
+            }
+            guard let dict = result as? [String: AnyObject] else {
+                print("格式错误")
+                finished(isSuccessed: false)
+                return
+            }
+            
+            // dict 一定是一个有值的字典
+            //保存用户信息
+            account.screen_name = dict["screen_name"] as? String
+            account.avatar_large = dict["avatar_large"] as? String
+            
+            //保存对象
+            NSKeyedArchiver.archiveRootObject(account, toFile: self.accountPath)
+            
+            print(self.accountPath)
+            
+            //成功的回调
+            finished(isSuccessed: true)
+            
+        }
+    }
+    
+}
+
+
+

@@ -49,19 +49,7 @@ class UserAccount: NSObject {
         
         return dictionaryWithValuesForKeys(keys).description
     }
-    
-    // MARK : - 保存当前对象
-    func saveUserAccount() {
-        //1. 保存路径
-        var path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last!
-        
-        path = (path as NSString).stringByAppendingPathComponent("account.plist")
-        
-        print(path)
-        // 归档保存
-        NSKeyedArchiver.archiveRootObject(self, toFile: path)
-    
-    }
+
     // MARK : - 归档和解档
     ///  归档
     ///
