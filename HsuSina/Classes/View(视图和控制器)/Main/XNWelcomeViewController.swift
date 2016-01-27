@@ -8,22 +8,26 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class XNWelcomeViewController: UIViewController {
     
+    ///  设置界面
     override func loadView() {
         // 直接使用背景图像作为根视图，不用关心图像的缩放问题
         view = backImageView
         
         setupUI()
     }
-
+    ///  视图加载完之后的后续处理
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //异步加载用户头像
+        iconView.sd_setImageWithURL(UserAccountViewModel.sharedUserAccount.avatarURL, placeholderImage: UIImage(named: "avatar_default_big"))
+        
+        
     }
-    ///  设置欢迎界面的动画
+    ///  视图已经显示，通常可以动画／键盘处理
     override func viewDidAppear(animated: Bool) {
         iconView.snp_updateConstraints { (make) -> Void in
             make.bottom.equalTo(view.snp_bottom).offset(-view.bounds.height + 200)
