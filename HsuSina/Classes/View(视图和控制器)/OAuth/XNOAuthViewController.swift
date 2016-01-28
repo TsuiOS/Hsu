@@ -82,12 +82,17 @@ extension XNOAuthViewController: UIWebViewDelegate {
         
         //4. 加载 accessToken
         UserAccountViewModel.sharedUserAccount.loadAccessToken(code) { (isSuccessed) -> () in
-            if isSuccessed {
-                print("OK")
-                print(UserAccountViewModel.sharedUserAccount.account)
-            } else {
-            
+            if !isSuccessed {
                 print("授权失败")
+            } else {
+                print("OK")
+//                print(UserAccountViewModel.sharedUserAccount.account)
+                self.dismissViewControllerAnimated(false) {
+                    
+                       NSNotificationCenter.defaultCenter().postNotificationName(XNSwitchRootViewControllerNotification, object: "welcome")
+                }
+             
+
             }
             
         }

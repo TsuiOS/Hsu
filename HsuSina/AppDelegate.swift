@@ -40,7 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             { [weak self](notification) -> Void in              // weak self
                 
                 //切换控制器
-                self?.window?.rootViewController = XNMainViewController()
+                let vc = notification.object != nil ? XNWelcomeViewController() : XNMainViewController()
+                self?.window?.rootViewController = vc
         }
         
         return true
