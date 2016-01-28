@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         
-        window?.rootViewController = XNWelcomeViewController()
+        window?.rootViewController = defaultRootViewController
         
         window?.makeKeyAndVisible()
         
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //测试归档的用户信息
 //        print(UserAccountViewModel())
         // 测试检查新版本的代码
-        print(isNewVersion)
+//        print(isNewVersion)
         return true
     }
     
@@ -49,18 +49,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - 界面切换代码
 extension AppDelegate {
     
+    /// 启动的跟控制器
+    private var defaultRootViewController: UIViewController {
+    
+        //1. 判断是否登录
+        if UserAccountViewModel.sharedUserAccount.userLogon {
+            return isNewVersion ? XNNewFeatureViewController() : XNWelcomeViewController()
+        
+        }
+        //2. 没有登录返回主控制器
+        return XNMainViewController()
+    }
+    
     ///  判断是否是新版本
     private var isNewVersion: Bool {
     
         //1. 当前版本
         let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
         let version = Double(currentVersion)!
-        print("当前版本 \(version)")
+//        print("当前版本 \(version)")
         
         //2. 之前的版本
         let sandboxVersionKey = "sandboxVersionKey"
         let sandboxVersion = NSUserDefaults.standardUserDefaults().doubleForKey(sandboxVersionKey)
-        print("之前版本 \(sandboxVersion)")
+//        print("之前版本 \(sandboxVersion)")
         
         //3. 保存当前版本
         NSUserDefaults.standardUserDefaults().setDouble(version, forKey: sandboxVersionKey)
