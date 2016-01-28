@@ -44,6 +44,8 @@ class XNWelcomeViewController: UIViewController {
                     self.welcomeLable.alpha = 1
                     }, completion: { (_) -> Void in
                         print("ok")
+                        // 发送通知
+                        NSNotificationCenter.defaultCenter().postNotificationName(XNSwitchRootViewControllerNotification, object: nil)
                 })
         }
     }

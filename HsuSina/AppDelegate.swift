@@ -33,7 +33,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print(UserAccountViewModel())
         // 测试检查新版本的代码
 //        print(isNewVersion)
+        ///  监听通知
+        NSNotificationCenter.defaultCenter().addObserverForName(XNSwitchRootViewControllerNotification, // 通知名称
+            object: nil,                             // 发送通知的对象, nil 监听任何对象
+            queue: nil)                              // nil 主线程
+            { [weak self](notification) -> Void in              // weak self
+                
+                //切换控制器
+                self?.window?.rootViewController = XNMainViewController()
+        }
+        
         return true
+    }
+    deinit {
+        /// 注销通知
+        NSNotificationCenter.defaultCenter().removeObserver(self, //监听通知者
+            name: XNSwitchRootViewControllerNotification,         //监听的通知
+            object: nil)                                          // 发送通知的对象
+    
     }
     
     ///  设置全局外观

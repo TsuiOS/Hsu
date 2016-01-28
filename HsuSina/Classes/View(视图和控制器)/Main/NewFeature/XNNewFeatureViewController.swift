@@ -93,6 +93,7 @@ private class XNNewFeatureCell: UICollectionViewCell {
     /// 点击开始体验按钮
     @objc private func clickStartBtutton() {
         print("开始体验")
+        NSNotificationCenter.defaultCenter().postNotificationName(XNSwitchRootViewControllerNotification, object: nil)
     }
     
     ///  显示动画按钮
