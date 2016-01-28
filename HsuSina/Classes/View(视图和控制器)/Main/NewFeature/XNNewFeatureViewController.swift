@@ -58,7 +58,24 @@ class XNNewFeatureViewController: UICollectionViewController {
     
         return cell
     }
+    
+    /// scrollView 停止滚动的方法
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        
+        //判断是否是最后一页
+        if page != XNNewFeatureImageCount - 1 {
+            return
+        }
+        // 找到最后一个 cell
+        let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: page, inSection: 0)) as! XNNewFeatureCell
+        
+        // 显示动画
+        cell.showButtonAnim()
+    }
+    
 }
+
 
 // MARK : - 新特性 cell
 private class XNNewFeatureCell: UICollectionViewCell {
@@ -67,7 +84,32 @@ private class XNNewFeatureCell: UICollectionViewCell {
     private var imageIndex: Int = 0 {
         didSet {
             iconView.image = UIImage(named: "new_feature_\(imageIndex + 1)")
-            print("new_feature_\(imageIndex + 1)")
+            
+            //隐藏按钮
+            startButton.hidden = true
+        }
+    }
+    
+    /// 点击开始体验按钮
+    @objc private func clickStartBtutton() {
+        print("开始体验")
+    }
+    
+    ///  显示动画按钮
+    private func showButtonAnim() {
+    
+        startButton.hidden = false
+        startButton.transform = CGAffineTransformMakeScale(0, 0)
+        //等待动画播放完毕之后交互
+        startButton.userInteractionEnabled = false
+        UIView.animateWithDuration(1.6,     //动画时长
+            delay: 0,                       //延时时间
+            usingSpringWithDamping: 0.6,    //弹力系数
+            initialSpringVelocity: 10,      //初始速度
+            options: [], animations: { () -> Void in
+                self.startButton.transform = CGAffineTransformIdentity
+            }) { (_) -> Void in
+                self.startButton.userInteractionEnabled = true
         }
     }
     override init(frame: CGRect) {
@@ -93,6 +135,8 @@ private class XNNewFeatureCell: UICollectionViewCell {
             make.centerX.equalTo(self.snp_centerX)
             make.bottom.equalTo(self.snp_bottom).multipliedBy(0.7)
         }
+        
+        startButton.addTarget(self, action: "clickStartBtutton", forControlEvents: .TouchUpInside)
     
     
     }
