@@ -85,12 +85,12 @@ extension AppDelegate {
         //1. 当前版本
         let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
         let version = Double(currentVersion)!
-//        print("当前版本 \(version)")
+        print("当前版本 \(version)")
         
         //2. 之前的版本
         let sandboxVersionKey = "sandboxVersionKey"
         let sandboxVersion = NSUserDefaults.standardUserDefaults().doubleForKey(sandboxVersionKey)
-//        print("之前版本 \(sandboxVersion)")
+        print("之前版本 \(sandboxVersion)")
         
         //3. 保存当前版本
         NSUserDefaults.standardUserDefaults().setDouble(version, forKey: sandboxVersionKey)

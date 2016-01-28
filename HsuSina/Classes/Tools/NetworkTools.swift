@@ -46,6 +46,34 @@ class NetworkTools: AFHTTPSessionManager {
         return nil
     }
 }
+
+// MARK: - 微博数据相关的方法
+extension NetworkTools {
+    
+    ///  加载微博书记
+    ///
+    ///  - parameter finished: 完成回调
+    /// - see [https://api.weibo.com/2/statuses/home_timeline.json](https://api.weibo.com/2/statuses/home_timeline.json)
+    func loadStatus(finished: XNRequesCallBack) {
+        
+        //1. 获取 token 字典
+        guard let params = tokenDict else {
+        
+            // 如果字典为 nil,通知调用方, token 无效
+            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]))
+            return
+        }
+        //2. 准备网络参数
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        
+        //3. 发起网络请求
+        request(.GET, URLString: urlString, parameters: params, finished: finished)
+        
+    }
+
+}
+
+
 // MARK: - 用户相关的方法
 extension NetworkTools {
 
