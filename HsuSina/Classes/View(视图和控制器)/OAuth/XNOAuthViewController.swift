@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /// 用户登录控制器
 class XNOAuthViewController: UIViewController {
@@ -16,6 +17,7 @@ class XNOAuthViewController: UIViewController {
     
     // MARK : - 监听方法
     @objc private func close() {
+        
     
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -71,6 +73,7 @@ extension XNOAuthViewController: UIWebViewDelegate {
         guard let query = url.query where query.hasPrefix("code=") else {
         
             print("取消授权")
+            close()
             return false
         }
         
@@ -82,23 +85,31 @@ extension XNOAuthViewController: UIWebViewDelegate {
         
         //4. 加载 accessToken
         UserAccountViewModel.sharedUserAccount.loadAccessToken(code) { (isSuccessed) -> () in
+            
             if !isSuccessed {
                 print("授权失败")
-            } else {
-                print("OK")
-//                print(UserAccountViewModel.sharedUserAccount.account)
+                
+                SVProgressHUD.showInfoWithStatus("世界上最遥远的距离就是没有网")
+                
+                return
+            }
+            print("OK")
                 self.dismissViewControllerAnimated(false) {
                     
-                       NSNotificationCenter.defaultCenter().postNotificationName(XNSwitchRootViewControllerNotification, object: "welcome")
+                       NSNotificationCenter.defaultCenter().postNotificationName(
+                        XNSwitchRootViewControllerNotification,
+                        object: "welcome")
                 }
-             
-
-            }
-            
         }
-        
         return false
-        
     }
 
+    func webViewDidStartLoad(webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        SVProgressHUD.dismiss()
+    }
+    
 }
