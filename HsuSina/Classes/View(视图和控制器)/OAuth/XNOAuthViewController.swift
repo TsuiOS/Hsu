@@ -95,8 +95,8 @@ extension XNOAuthViewController: UIWebViewDelegate {
             }
             print("OK")
                 self.dismissViewControllerAnimated(false) {
-                    
-                       NSNotificationCenter.defaultCenter().postNotificationName(
+                    SVProgressHUD.dismiss()
+                    NSNotificationCenter.defaultCenter().postNotificationName(
                         XNSwitchRootViewControllerNotification,
                         object: "welcome")
                 }
