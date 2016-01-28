@@ -58,7 +58,7 @@ extension XNHomeTableViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellNormalId, forIndexPath: indexPath)
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.text
         
         return cell
     }

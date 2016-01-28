@@ -12,7 +12,7 @@ import Foundation
 class StatusListViewModel {
     
     ///  微博数据数组
-    lazy var statusList = [XNStatus]()
+    lazy var statusList = [StatusViewModel]()
     
     ///  加载网络数据
     func loadStatus(finished:(isSuccessed: Bool) -> ()) {
@@ -32,11 +32,11 @@ class StatusListViewModel {
             }
             /// 字典转模型
             //1. 可变的数组
-            var dataList = [XNStatus]()
+            var dataList = [StatusViewModel]()
             
             //2 遍历数组
             for dict in array {
-                dataList.append(XNStatus(dict: dict))
+                dataList.append(StatusViewModel(status: XNStatus(dict: dict)))
             }
             
             //3. 拼接数据

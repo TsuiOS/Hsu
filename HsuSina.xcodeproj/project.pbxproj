@@ -29,6 +29,7 @@
 		04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */; };
 		04F3DAA81C5A79160047FEC0 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */; };
 		04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA91C5A827F0047FEC0 /* XNUser.swift */; };
+		04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAAB1C5A86F10047FEC0 /* StatusViewModel.swift */; };
 		0DDA5977997DBCD79840A129 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C0A1525B40FE9160B0E94F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatus.swift; sourceTree = "<group>"; };
 		04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA91C5A827F0047FEC0 /* XNUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNUser.swift; sourceTree = "<group>"; };
+		04F3DAAB1C5A86F10047FEC0 /* StatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		0B6C504117CF5DEC64649093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		24C0A1525B40FE9160B0E94F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77ADCA5D4572680FE1B97C54 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */,
 				04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */,
+				04F3DAAB1C5A86F10047FEC0 /* StatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04957F0C1C572D0F002C6FCC /* XNOAuthViewController.swift in Sources */,
 				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
+				04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */,
 				04957F071C572155002C6FCC /* NetworkTools.swift in Sources */,
 				04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */,
 				04C251C41C57CEEA008AADC5 /* UserAccount.swift in Sources */,
