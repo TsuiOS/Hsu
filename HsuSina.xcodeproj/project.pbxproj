@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0403C1351C59E99600E00B97 /* XNNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */; };
 		0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */; };
 		0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C6011C55C42200297C41 /* XNVisitorView.swift */; };
 		0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490593E1C55060D00B1EC79 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNNewFeatureViewController.swift; sourceTree = "<group>"; };
 		0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorTableViewController.swift; sourceTree = "<group>"; };
 		0439C6011C55C42200297C41 /* XNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorView.swift; sourceTree = "<group>"; };
 		0490593B1C55060D00B1EC79 /* HsuSina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsuSina.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */,
+				0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */,
 			);
 			path = NewFeature;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */,
 				04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */,
 				0498C3EC1C561EAB0067798D /* UIImageView+Extension.swift in Sources */,
+				0403C1351C59E99600E00B97 /* XNNewFeatureViewController.swift in Sources */,
 				04E123451C585F38006ABA9C /* XNWelcomeViewController.swift in Sources */,
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04957F0C1C572D0F002C6FCC /* XNOAuthViewController.swift in Sources */,
