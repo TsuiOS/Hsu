@@ -10,6 +10,11 @@ import UIKit
 
 class XNMainViewController: UITabBarController {
 
+    ///  监听方法
+    @objc private func clickComposeButton() {
+        print("点我了")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +22,8 @@ class XNMainViewController: UITabBarController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        //会创建 tabbar 中的所有控制器对应的按钮
+        super.viewWillAppear(animated)
         setupComposeButton()
     }
     
@@ -30,7 +37,7 @@ class XNMainViewController: UITabBarController {
 // MARK: - 设置界面
 extension XNMainViewController {
     
-/// 设置撰写按钮
+    /// 设置撰写按钮
     private func setupComposeButton() {
     
         //1.添加按钮
@@ -39,6 +46,8 @@ extension XNMainViewController {
         let count = childViewControllers.count
         let w = tabBar.bounds.width / CGFloat(count) - 1
         composedButton.frame = CGRectInset(tabBar.bounds, 2 * w, 0)
+        
+        composedButton.addTarget(self, action: "clickComposeButton", forControlEvents: .TouchUpInside)
  
     }
 

@@ -18,7 +18,7 @@ class XNOAuthViewController: UIViewController {
     // MARK : - 监听方法
     @objc private func close() {
         
-    
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     ///  自动填充用户名和密码
