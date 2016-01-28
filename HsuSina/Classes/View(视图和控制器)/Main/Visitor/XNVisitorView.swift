@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 /// 访客视图
 class XNVisitorView: UIView {
@@ -99,52 +100,45 @@ extension XNVisitorView {
         addSubview(loginButton)
     
         //2.设置自动布局
-        /**
-        - 添加约束需要添加到父视图上
-        - 建议，子视图最好有一个统一的参照物！
-        */
-        // translatesAutoresizingMaskIntoConstraints 默认是 true，支持使用 setFrame 的方式设置控件位置
-        // false 支持使用自动布局来设置控件位置
-        for v in subviews {
-            v.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
     
         //1. 图标
-        addConstraint(NSLayoutConstraint(item: iconView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: iconView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: -60))
+        iconView.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(self.snp_centerX)
+            make.centerY.equalTo(self.snp_centerY).offset(-60)
+        }
         //2.房子
-        addConstraint(NSLayoutConstraint(item: homeIconView, attribute: .CenterX, relatedBy: .Equal, toItem: iconView, attribute: .CenterX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: homeIconView, attribute: .CenterY, relatedBy: .Equal, toItem: iconView, attribute: .CenterY, multiplier: 1.0, constant: 0))
+        homeIconView.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(iconView.snp_center)
+        }
         //3. 消息文字
-        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .CenterX, relatedBy: .Equal, toItem: iconView, attribute: .CenterX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Top, relatedBy: .Equal, toItem: iconView, attribute: .Bottom, multiplier: 1.0, constant: 16))
-        //设置lable 的宽高
-        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 224))
-        addConstraint(NSLayoutConstraint(item: messageLable, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 36))
+        messageLable.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(iconView.snp_centerX)
+            make.top.equalTo(iconView.snp_bottom).offset(16)
+            make.width.equalTo(224)
+            make.height.equalTo(36)
+        }
         //4. 注册按钮
-        addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Left, relatedBy: .Equal, toItem: messageLable, attribute: .Left, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Top, relatedBy: .Equal, toItem: messageLable, attribute: .Bottom, multiplier: 1.0, constant: 16))
-        addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 100))
-        addConstraint(NSLayoutConstraint(item: registerButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 36))
+        registerButton.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(messageLable.snp_left)
+            make.top.equalTo(messageLable.snp_bottom).offset(16)
+            make.width.equalTo(100)
+            make.height.equalTo(36)
+        }
         //5. 登录按钮
-        addConstraint(NSLayoutConstraint(item: loginButton, attribute: .Right, relatedBy: .Equal, toItem: messageLable, attribute: .Right, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: loginButton, attribute: .Top, relatedBy: .Equal, toItem: messageLable, attribute: .Bottom, multiplier: 1.0, constant: 16))
-        addConstraint(NSLayoutConstraint(item: loginButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 100))
-        addConstraint(NSLayoutConstraint(item: loginButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 36))
-        //6 VFL方式设置遮的自动布局
-        /**
-        VFL : 可视化格式语言
-        
-        H 水平方向
-        V 垂直方向
-        | 边界
-        [] 包装控件
-        views: 是一个字典 [名字: 控件名] - VFL 字符串中表示控件的字符串
-        metrics: 是一个字典 [名字: NSNumber] - VFL 字符串中表示某一个数值
-        */
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[mask]-0-|", options: [], metrics: nil, views: ["mask": maskIconView]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[mask]-(btnHeight)-[regButton]", options: [], metrics: ["btnHeight": -36], views: ["mask": maskIconView,"regButton": registerButton]))
+        loginButton.snp_makeConstraints { (make) -> Void in
+            make.right.equalTo(messageLable.snp_right)
+            make.top.equalTo(messageLable.snp_bottom).offset(16)
+            make.width.equalTo(100)
+            make.height.equalTo(36)
+        }
+        //6 遮的自动布局
+
+        maskIconView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp_top)
+            make.left.equalTo(self.snp_left)
+            make.right.equalTo(self.snp_right)
+            make.bottom.equalTo(registerButton.snp_top)
+        }
         //设置背景颜色
         backgroundColor = UIColor(white: 237.0 / 255, alpha: 1.0)
         
