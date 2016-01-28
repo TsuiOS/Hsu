@@ -28,6 +28,7 @@
 		04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */; };
 		04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */; };
 		04F3DAA81C5A79160047FEC0 /* StatusesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusesViewModel.swift */; };
+		04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA91C5A827F0047FEC0 /* XNUser.swift */; };
 		0DDA5977997DBCD79840A129 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C0A1525B40FE9160B0E94F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatus.swift; sourceTree = "<group>"; };
 		04F3DAA71C5A79160047FEC0 /* StatusesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewModel.swift; sourceTree = "<group>"; };
+		04F3DAA91C5A827F0047FEC0 /* XNUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNUser.swift; sourceTree = "<group>"; };
 		0B6C504117CF5DEC64649093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		24C0A1525B40FE9160B0E94F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77ADCA5D4572680FE1B97C54 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				04C251C31C57CEEA008AADC5 /* UserAccount.swift */,
 				04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */,
+				04F3DAA91C5A827F0047FEC0 /* XNUser.swift */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B5543A1C5522C8001C9D47 /* XNMessageTableViewController.swift in Sources */,
+				04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */,
 				04B554381C5522AF001C9D47 /* XNHomeTableViewController.swift in Sources */,
 				04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */,
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,

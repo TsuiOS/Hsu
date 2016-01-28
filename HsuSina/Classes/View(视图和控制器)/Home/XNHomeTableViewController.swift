@@ -41,6 +41,8 @@ class XNHomeTableViewController: XNVisitorTableViewController {
                 SVProgressHUD.showInfoWithStatus("数据加载失败,请稍后再试")
                 return
             }
+            //测试数据
+            print(self.listViewModel.statusList)
             //4. 刷新数据
             self.tableView.reloadData()
         }

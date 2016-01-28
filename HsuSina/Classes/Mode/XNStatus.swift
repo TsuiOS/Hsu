@@ -19,17 +19,29 @@ class XNStatus: NSObject {
     var created_at: String?
     /// 微博来源
     var source: String?
-    
+    ///  用户模型
+    var user: XNUser?
+
     init(dict: [String: AnyObject]) {
         super.init()
         
         setValuesForKeysWithDictionary(dict)
     }
+    override func setValue(value: AnyObject?, forKey key: String) {
+        //判断 key 是否是 user
+        if key == "user" {
+            if let dict = value as? [String: AnyObject] {
+                user = XNUser(dict: dict)
+            }
+            return
+        }
+        super.setValue(value, forKey: key)
+    }
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
     
     override var description: String {
-        let keys = ["id", "text", "created_at", "source"]
+        let keys = ["id", "text", "created_at", "source", "user"]
         
         return dictionaryWithValuesForKeys(keys).description
     }
