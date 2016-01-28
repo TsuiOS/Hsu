@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         
-        window?.rootViewController = XNNewFeatureViewController()
+        window?.rootViewController = XNWelcomeViewController()
         
         window?.makeKeyAndVisible()
         
@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         //测试归档的用户信息
 //        print(UserAccountViewModel())
-        
+        // 测试检查新版本的代码
+        print(isNewVersion)
         return true
     }
     
@@ -42,6 +43,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     UITabBar.appearance().tintColor = XNAppearanceTintColor
     }
+
+}
+
+// MARK: - 界面切换代码
+extension AppDelegate {
+    
+    ///  判断是否是新版本
+    private var isNewVersion: Bool {
+    
+        //1. 当前版本
+        let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        let version = Double(currentVersion)!
+        print("当前版本 \(version)")
+        
+        //2. 之前的版本
+        let sandboxVersionKey = "sandboxVersionKey"
+        let sandboxVersion = NSUserDefaults.standardUserDefaults().doubleForKey(sandboxVersionKey)
+        print("之前版本 \(sandboxVersion)")
+        
+        //3. 保存当前版本
+        NSUserDefaults.standardUserDefaults().setDouble(version, forKey: sandboxVersionKey)
+    
+        return version > sandboxVersion
+    }
+
 
 }
 
