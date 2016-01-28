@@ -27,7 +27,7 @@
 		04E123451C585F38006ABA9C /* XNWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */; };
 		04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */; };
 		04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */; };
-		04F3DAA81C5A79160047FEC0 /* StatusesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusesViewModel.swift */; };
+		04F3DAA81C5A79160047FEC0 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */; };
 		04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA91C5A827F0047FEC0 /* XNUser.swift */; };
 		0DDA5977997DBCD79840A129 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C0A1525B40FE9160B0E94F /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XNWelcomeViewController.swift; path = ../XNWelcomeViewController.swift; sourceTree = "<group>"; };
 		04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatus.swift; sourceTree = "<group>"; };
-		04F3DAA71C5A79160047FEC0 /* StatusesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewModel.swift; sourceTree = "<group>"; };
+		04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA91C5A827F0047FEC0 /* XNUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNUser.swift; sourceTree = "<group>"; };
 		0B6C504117CF5DEC64649093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		24C0A1525B40FE9160B0E94F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */,
-				04F3DAA71C5A79160047FEC0 /* StatusesViewModel.swift */,
+				04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 				0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */,
 				0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */,
 				04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */,
-				04F3DAA81C5A79160047FEC0 /* StatusesViewModel.swift in Sources */,
+				04F3DAA81C5A79160047FEC0 /* StatusListViewModel.swift in Sources */,
 				0498C3EC1C561EAB0067798D /* UIImageView+Extension.swift in Sources */,
 				0403C1351C59E99600E00B97 /* XNNewFeatureViewController.swift in Sources */,
 				04E123451C585F38006ABA9C /* XNWelcomeViewController.swift in Sources */,

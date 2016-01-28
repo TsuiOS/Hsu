@@ -9,7 +9,7 @@
 import Foundation
 
 /// 微博数据列表模型
-class StatusesViewModel {
+class StatusListViewModel {
     
     ///  微博数据数组
     lazy var statusList = [XNStatus]()

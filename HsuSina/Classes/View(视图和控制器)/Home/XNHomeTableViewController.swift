@@ -15,7 +15,7 @@ private let XNStatusCellNormalId = "XNStatusCellNormalId"
 class XNHomeTableViewController: XNVisitorTableViewController {
 
     /// 微博数据列表模型
-    private lazy var listViewModel = StatusesViewModel()
+    private lazy var listViewModel = StatusListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
