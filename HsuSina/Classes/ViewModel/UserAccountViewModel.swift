@@ -18,6 +18,15 @@ class UserAccountViewModel {
     ///  用户模型
     var account: UserAccount?
     
+    /// 返回有效的 token
+    var accessToken: String? {
+    
+        if !isExpired {
+            return account?.access_token
+        }
+        return nil
+    }
+    
     /// 用户登录标识
     var userLogon: Bool {
         
@@ -49,10 +58,8 @@ class UserAccountViewModel {
     
     ///  构造函数
     init() {
-    
         // 从沙盒解档数据，恢复当前数据
         account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? UserAccount
-        
         // 判断 token 是否过期
         if isExpired {
             print("已经过期")
@@ -60,7 +67,6 @@ class UserAccountViewModel {
             //如果过期,清空接档数据
             account = nil
         }
-        
 //        print(account)
     
     }
@@ -95,7 +101,7 @@ extension UserAccountViewModel {
     ///  - parameter account: 用户账户对象
     private func loadUserInfo(account: UserAccount, finished:(isSuccessed: Bool) -> ()) {
         
-        NetworkTools.sharedTools.loadUserInfo(account.uid!, accessToken: account.access_token!) { (result, error) -> () in
+        NetworkTools.sharedTools.loadUserInfo(account.uid!) { (result, error) -> () in
             if error != nil {
                 print("加载用户出错了")
                 finished(isSuccessed: false)

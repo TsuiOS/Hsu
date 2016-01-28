@@ -35,6 +35,16 @@ class NetworkTools: AFHTTPSessionManager {
         
         return tools
     }()
+    
+    /// 返回 token 字典
+    private var tokenDict: [String: AnyObject]? {
+        //判断 token 是否有效
+        if let token = UserAccountViewModel.sharedUserAccount.accessToken {
+        
+            return ["access_token": token]
+        }
+        return nil
+    }
 }
 // MARK: - 用户相关的方法
 extension NetworkTools {
@@ -42,15 +52,21 @@ extension NetworkTools {
     ///  加载用户信息
     ///
     ///  - parameter uid:         需要查询的用户ID
-    ///  - parameter accessToken: 采用OAuth授权方式为必填参数，OAuth授权后获得
     ///  - parameter finished:    完成后的回调
     ///- see [http://open.weibo.com/wiki/2/users/show](http://open.weibo.com/wiki/2/users/show)
     /// 参数uid与screen_name二者必选其一，且只能选其一
-    func loadUserInfo(uid: String, accessToken: String, finished: XNRequesCallBack) {
-    
+    func loadUserInfo(uid: String, finished: XNRequesCallBack) {
+        
+        guard var params = tokenDict else {
+        
+            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为kong"]) )
+            return
+        }
+        
+        
         let urlString = "https://api.weibo.com/2/users/show.json"
         
-        let params = ["uid": uid, "access_token": accessToken]
+        params["uid"] = uid
         
         request(.GET, URLString: urlString, parameters: params, finished: finished)
     
