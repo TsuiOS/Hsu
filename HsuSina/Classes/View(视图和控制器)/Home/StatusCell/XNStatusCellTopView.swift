@@ -7,10 +7,6 @@
 //
 
 import UIKit
-/// 微博 Cell 中控件的间距数值
-let StatusCellMargin: CGFloat = 12
-/// 微博头像的宽度
-let StatusCellIconWidth: CGFloat = 35
 
 /// 顶部视图
 class XNStatusCellTopView: UIView {
