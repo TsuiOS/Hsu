@@ -5,7 +5,7 @@
 //  Created by mac on 16/1/24.
 //  Copyright © 2016年 Hsu. All rights reserved.
 //
-
+///  249 
 import UIKit
 import SVProgressHUD
 
@@ -59,7 +59,8 @@ extension XNHomeTableViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellNormalId, forIndexPath: indexPath) as! XNStatusCell
-//        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.text
+        
+        cell.viewModel = listViewModel.statusList[indexPath.row]
         
         return cell
     }

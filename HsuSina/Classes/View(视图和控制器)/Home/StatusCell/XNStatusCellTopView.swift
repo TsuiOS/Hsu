@@ -15,6 +15,24 @@ let StatusCellIconWidth: CGFloat = 35
 /// 顶部视图
 class XNStatusCellTopView: UIView {
     
+    /// 微博视图模型
+    var viewModel: StatusViewModel? {
+        didSet {
+            // 姓名
+            nameLable.text = viewModel?.status.user?.screen_name
+            // 头像
+            iconView.sd_setImageWithURL(viewModel?.userProfileURL, placeholderImage: viewModel?.userDefaultIconView)
+            // 会员图标
+            memberIconView.image = viewModel?.userMemberImage
+            // 认证图标
+            vipIconView.image = viewModel?.userVipImage
+            //时间标签
+            timeLabel.text = "公元前120年"
+            //来源
+            sourceLabel.text = "来自 HsuVV"
+        }
+    }
+    
     // MARK : - 构造函数
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +62,11 @@ class XNStatusCellTopView: UIView {
 extension XNStatusCellTopView {
 
     private func setupUI() {
+        
+        let sepView = UIView()
+        sepView.backgroundColor = UIColor.lightGrayColor()
+        addSubview(sepView)
+        
         // 设置背景色
         backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         //1. 添加控件

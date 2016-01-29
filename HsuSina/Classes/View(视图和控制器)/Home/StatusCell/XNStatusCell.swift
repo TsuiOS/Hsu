@@ -13,7 +13,7 @@ class XNStatusCell: UITableViewCell {
     ///  微博视图模型
     var viewModel: StatusViewModel? {
         didSet {
-            //设置工作
+            topView.viewModel = viewModel
         }
     }
     // MARK : - 构造函数
@@ -27,6 +27,7 @@ class XNStatusCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     // MARK: - 懒加载控件
+    
     /// 顶部视图
     private lazy var topView: XNStatusCellTopView = XNStatusCellTopView()
     /// 微博正文
@@ -42,6 +43,7 @@ extension XNStatusCell {
     private func setupUI() {
         //1. 添加控件
         contentView.addSubview(topView)
+        backgroundColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1.0)
         
         //2. 自动布局
         topView.snp_makeConstraints { (make) -> Void in
