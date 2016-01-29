@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 底部视图
 class XNStatusCellBottomView: UIView {
 
     /*

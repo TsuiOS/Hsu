@@ -7,15 +7,85 @@
 //
 
 import UIKit
+/// 微博 Cell 中控件的间距数值
+let StatusCellMargin: CGFloat = 12
+/// 微博头像的宽度
+let StatusCellIconWidth: CGFloat = 35
 
+/// 顶部视图
 class XNStatusCellTopView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    
+    // MARK : - 构造函数
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupUI()
     }
-    */
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    // MARK : - 懒加载控件
+    /// 头像 iconView
+    private lazy var iconView: UIImageView = UIImageView(imageName: "avatar_default_big")
+    /// 姓名 nameLabel
+    private lazy var nameLable: UILabel = UILabel(title: "姓名", color: UIColor.darkGrayColor(), fontSize: 14)
+    /// 会员图标 memberIconView
+    private lazy var memberIconView: UIImageView = UIImageView(imageName: "common_icon_membership_level1")
+    /// 认证图标 vipIconView
+    private lazy var vipIconView: UIImageView = UIImageView(imageName: "avatar_enterprise_vip")
+    /// 时间标签 timeLabel
+    private lazy var timeLabel: UILabel = UILabel(title: "公元前120年", color: UIColor.darkGrayColor(), fontSize: 11)
+    /// 来源标签 sourceLabel
+    private lazy var sourceLabel: UILabel = UILabel(title: "来源: HsuVV", color: UIColor.darkGrayColor(), fontSize: 11)
+}
+
+// MARK: - 设置界面
+extension XNStatusCellTopView {
+
+    private func setupUI() {
+        // 设置背景色
+        backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        //1. 添加控件
+        addSubview(iconView)
+        addSubview(nameLable)
+        addSubview(memberIconView)
+        addSubview(vipIconView)
+        addSubview(timeLabel)
+        addSubview(sourceLabel)
+        
+        //2. 自动布局
+        // 头像
+        iconView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self).offset(StatusCellMargin)
+            make.left.equalTo(self).offset(StatusCellMargin)
+            make.width.equalTo(StatusCellIconWidth)
+            make.height.equalTo(StatusCellIconWidth)
+        }
+        // 姓名
+        nameLable.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(iconView)
+            make.left.equalTo(iconView.snp_right).offset(StatusCellMargin)
+        }
+        // 会员图标
+        memberIconView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(nameLable)
+            make.left.equalTo(nameLable.snp_right).offset(StatusCellMargin)
+        }
+        //认证图标
+        vipIconView.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(iconView.snp_right)
+            make.centerY.equalTo(iconView.snp_bottom)
+        }
+        //时间标签
+        timeLabel.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(nameLable)
+            make.bottom.equalTo(iconView)
+        }
+        //来源标签
+        sourceLabel.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(timeLabel.snp_right).offset(StatusCellMargin)
+            make.bottom.equalTo(timeLabel)
+        }
+    }
 }

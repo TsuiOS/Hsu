@@ -29,7 +29,8 @@ class XNHomeTableViewController: XNVisitorTableViewController {
     ///  准备表格
     private func preferTableView() {
         //注册可重用 cell
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+        tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+        tableView.rowHeight = 200
     
     }
     
@@ -57,8 +58,8 @@ extension XNHomeTableViewController {
         return listViewModel.statusList.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellNormalId, forIndexPath: indexPath)
-        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.text
+        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellNormalId, forIndexPath: indexPath) as! XNStatusCell
+//        cell.textLabel?.text = listViewModel.statusList[indexPath.row].status.text
         
         return cell
     }
