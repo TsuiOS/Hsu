@@ -44,13 +44,13 @@ extension XNStatusCell {
         //1. 添加控件
         contentView.addSubview(topView)
         backgroundColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1.0)
-        
+    
         //2. 自动布局
         topView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentView.snp_top)
             make.left.equalTo(contentView.snp_left)
             make.right.equalTo(contentView.snp_right)
-            make.height.equalTo(60)
+            make.height.equalTo(2 * StatusCellMargin + StatusCellIconWidth)
         }
     
     }

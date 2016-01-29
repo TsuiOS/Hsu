@@ -63,12 +63,13 @@ extension XNStatusCellTopView {
 
     private func setupUI() {
         
+        /// 设置分割线
         let sepView = UIView()
-        sepView.backgroundColor = UIColor.lightGrayColor()
+        sepView.backgroundColor = UIColor(red: 214 / 255.0, green: 214 / 255.0, blue: 214 / 255.0, alpha: 1.0)
         addSubview(sepView)
         
         // 设置背景色
-        backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+//        backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         //1. 添加控件
         addSubview(iconView)
         addSubview(nameLable)
@@ -78,9 +79,15 @@ extension XNStatusCellTopView {
         addSubview(sourceLabel)
         
         //2. 自动布局
+        sepView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp_top)
+            make.left.equalTo(self.snp_left)
+            make.right.equalTo(self.snp_right)
+            make.height.equalTo(StatusCellMargin)
+        }
         // 头像
         iconView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self).offset(StatusCellMargin)
+            make.top.equalTo(sepView.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(self).offset(StatusCellMargin)
             make.width.equalTo(StatusCellIconWidth)
             make.height.equalTo(StatusCellIconWidth)

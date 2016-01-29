@@ -28,8 +28,11 @@ class XNHomeTableViewController: XNVisitorTableViewController {
     }
     ///  准备表格
     private func preferTableView() {
+        
         //注册可重用 cell
         tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+        //取消分割线
+        tableView.separatorStyle = .None
         tableView.rowHeight = 200
     
     }
