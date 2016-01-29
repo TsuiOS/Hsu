@@ -33,7 +33,9 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
         //取消分割线
         tableView.separatorStyle = .None
-        tableView.rowHeight = 200
+        // 自动计算行高
+        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = UITableViewAutomaticDimension
     
     }
     
