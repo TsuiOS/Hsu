@@ -40,7 +40,28 @@ extension UIButton {
         setTitle(title, forState: .Normal)
         setTitleColor(color, forState: .Normal)
         setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+        
+        sizeToFit()
+    }
     
+    /// 便利构造函数
+    ///
+    /// - parameter title:     title
+    /// - parameter color:     color
+    /// - parameter fontSize:  字体大小
+    /// - parameter imageName: 图像名称
+    ///
+    /// - returns: UIButton
+    convenience init(title: String, fontSize: CGFloat, color: UIColor, imageName: String) {
+        self.init()
+        
+        setTitle(title, forState: .Normal)
+        setTitleColor(color, forState: .Normal)
+        setImage(UIImage(named: imageName), forState: .Normal)
+        
+        titleLabel?.font = UIFont.systemFontOfSize(fontSize)
+        
+        sizeToFit()
     }
     
 }

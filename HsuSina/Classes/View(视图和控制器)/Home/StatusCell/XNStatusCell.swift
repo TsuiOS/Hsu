@@ -55,6 +55,7 @@ extension XNStatusCell {
         //1. 添加控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLable)
+        contentView.addSubview(bottomView)
         
         backgroundColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1.0)
     
@@ -70,9 +71,18 @@ extension XNStatusCell {
         contentLable.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(topView.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView.snp_left).offset(StatusCellMargin)
-            //指定向下的约束
-            make.bottom.equalTo(contentView.snp_bottom).offset(-StatusCellMargin)
-        
+
+        }
+        // 底部视图
+        // 3> 底部视图
+        bottomView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
+            make.left.equalTo(contentView.snp_left)
+            make.right.equalTo(contentView.snp_right)
+            make.height.equalTo(44)
+            
+            // 指定向下的约束
+            make.bottom.equalTo(contentView.snp_bottom)
         }
     
     }
