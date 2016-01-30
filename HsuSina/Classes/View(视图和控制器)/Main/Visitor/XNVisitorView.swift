@@ -79,10 +79,10 @@ class XNVisitorView: UIView {
     private lazy var messageLable: UILabel = UILabel(title: "关注一些人，回这里看看有什么惊喜")
     
     /// 注册按钮
-    lazy var registerButton: UIButton = UIButton(title: "注册", color: UIColor.orangeColor(), imageName: "common_button_white_disable")
+    lazy var registerButton: UIButton = UIButton(title: "注册", color: UIColor.orangeColor(), backgroundImage: "common_button_white_disable")
     
     /// 登录按钮
-    lazy var loginButton: UIButton = UIButton(title: "登录", color: UIColor.darkGrayColor(), imageName: "common_button_white_disable")
+    lazy var loginButton: UIButton = UIButton(title: "登录", color: UIColor.darkGrayColor(), backgroundImage: "common_button_white_disable")
 
 
 }

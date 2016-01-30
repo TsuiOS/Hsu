@@ -30,16 +30,16 @@ extension UIButton {
     
     ///  便利构造函数
     ///
-    ///  - parameter title:     title
-    ///  - parameter color:     color
-    ///  - parameter imageName: imageName
+    ///  - parameter title:             title
+    ///  - parameter color:             color
+    ///  - parameter backgroundImage:   背景图像
     ///
     ///  - returns: UIButton
-    convenience init(title: String, color: UIColor = UIColor.orangeColor(),imageName: String) {
+    convenience init(title: String, color: UIColor,backgroundImage: String) {
         self.init()
         setTitle(title, forState: .Normal)
         setTitleColor(color, forState: .Normal)
-        setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+        setBackgroundImage(UIImage(named: backgroundImage), forState: .Normal)
         
         sizeToFit()
     }

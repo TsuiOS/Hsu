@@ -122,9 +122,9 @@
 		04B5542A1C5521CA001C9D47 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				04B5542C1C5521CA001C9D47 /* Tools */,
 				04B5542D1C5521CA001C9D47 /* View(视图和控制器) */,
 				04B5542B1C5521CA001C9D47 /* Mode */,
-				04B5542C1C5521CA001C9D47 /* Tools */,
 				04B554341C5521CA001C9D47 /* ViewModel */,
 			);
 			path = Classes;

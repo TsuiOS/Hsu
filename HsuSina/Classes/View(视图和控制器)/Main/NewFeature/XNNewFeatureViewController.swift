@@ -145,6 +145,6 @@ private class XNNewFeatureCell: UICollectionViewCell {
     /// 图像
     private lazy var iconView: UIImageView = UIImageView()
     ///  开始按钮
-    private lazy var startButton: UIButton = UIButton(title: "开始体验", color:  UIColor.whiteColor(), imageName: "new_feature_finish_button")
+    private lazy var startButton: UIButton = UIButton(title: "开始体验", color:  UIColor.whiteColor(), backgroundImage: "new_feature_finish_button")
 
 }
