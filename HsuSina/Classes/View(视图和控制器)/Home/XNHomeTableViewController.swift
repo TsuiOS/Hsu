@@ -19,9 +19,11 @@ class XNHomeTableViewController: XNVisitorTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if !UserAccountViewModel.sharedUserAccount.userLogon {
         visitorView?.setupInfo(nil,title: "关注一些人，回这里看看有什么惊喜")
         
+         return
+        }
         preferTableView()
         
         loadData()
