@@ -33,7 +33,10 @@ class UserAccountViewModel {
         //token 有值 并且没有过期
         return account?.access_token != nil && !isExpired
     }
-    
+    ///  用户头像 URL
+    var avatarURL: NSURL {
+        return NSURL(string: account?.avatar_large ?? "")!
+    }
     /// 归档保存的路径
     private var accountPath: String {
         
@@ -67,13 +70,6 @@ class UserAccountViewModel {
             //如果过期,清空接档数据
             account = nil
         }
-//        print(account)
-    
-    }
-    
-    ///  用户头像 URL
-    var avatarURL: NSURL {
-        return NSURL(string: account?.avatar_large ?? "")!
     }
     
 }

@@ -23,6 +23,7 @@
 		04B554401C552477001C9D47 /* XNMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5543F1C552477001C9D47 /* XNMainViewController.swift */; };
 		04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B554441C552EC8001C9D47 /* UIButton+Extension.swift */; };
 		04C251C41C57CEEA008AADC5 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C251C31C57CEEA008AADC5 /* UserAccount.swift */; };
+		04CC8D4A1C5CDAF000B26EFB /* XNStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC8D491C5CDAF000B26EFB /* XNStatusPictureView.swift */; };
 		04D7DAEF1C56768500D74194 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D7DAEE1C56768500D74194 /* Common.swift */; };
 		04E123451C585F38006ABA9C /* XNWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */; };
 		04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */; };
@@ -55,6 +56,7 @@
 		04B5543F1C552477001C9D47 /* XNMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNMainViewController.swift; sourceTree = "<group>"; };
 		04B554441C552EC8001C9D47 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		04C251C31C57CEEA008AADC5 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		04CC8D491C5CDAF000B26EFB /* XNStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatusPictureView.swift; sourceTree = "<group>"; };
 		04D7DAEE1C56768500D74194 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XNWelcomeViewController.swift; path = ../XNWelcomeViewController.swift; sourceTree = "<group>"; };
 		04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				04F3DAAE1C5A8A5B0047FEC0 /* XNStatusCell.swift */,
 				04F3DAB01C5A8A750047FEC0 /* XNStatusCellTopView.swift */,
 				04F3DAB21C5A8A8D0047FEC0 /* XNStatusCellBottomView.swift */,
+				04CC8D491C5CDAF000B26EFB /* XNStatusPictureView.swift */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04957F0C1C572D0F002C6FCC /* XNOAuthViewController.swift in Sources */,
 				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
+				04CC8D4A1C5CDAF000B26EFB /* XNStatusPictureView.swift in Sources */,
 				04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */,
 				04957F071C572155002C6FCC /* NetworkTools.swift in Sources */,
 				04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */,

@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         
+        print(defaultRootViewController)
         window?.rootViewController = defaultRootViewController
-        
+        print(window?.rootViewController)
         window?.makeKeyAndVisible()
         
         //测试网络工具

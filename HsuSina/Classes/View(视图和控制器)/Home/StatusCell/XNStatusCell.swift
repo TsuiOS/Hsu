@@ -44,7 +44,8 @@ class XNStatusCell: UITableViewCell {
                                                      color:  UIColor.darkGrayColor(),
                                                   fontSize: 15,
                                                screenInset: StatusCellMargin)
-    
+    /// 配图视图
+    private lazy var pictureView: XNStatusPictureView = XNStatusPictureView()
     /// 底部视图
     private lazy var bottomView: XNStatusCellBottomView = XNStatusCellBottomView()
     
@@ -57,6 +58,7 @@ extension XNStatusCell {
         //1. 添加控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLable)
+        contentView.addSubview(pictureView)
         contentView.addSubview(bottomView)
         
         backgroundColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1.0)
@@ -74,10 +76,16 @@ extension XNStatusCell {
             make.left.equalTo(contentView.snp_left).offset(StatusCellMargin)
 
         }
-        // 底部视图
-        // 3> 底部视图
-        bottomView.snp_makeConstraints { (make) -> Void in
+        // 配图视图
+        pictureView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
+            make.left.equalTo(contentLable)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
+        }
+        // 底部视图
+        bottomView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(pictureView.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView.snp_left)
             make.right.equalTo(contentView.snp_right)
             make.height.equalTo(44)
