@@ -27,6 +27,8 @@ class XNStatusCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        // 去除 cell的选中状态
+        selectionStyle = .None
         setupUI()
     }
 
@@ -58,7 +60,6 @@ extension XNStatusCell {
         contentView.addSubview(bottomView)
         
         backgroundColor = UIColor(red: 245 / 255.0, green: 245 / 255.0, blue: 245 / 255.0, alpha: 1.0)
-    
         //2. 自动布局
         ///  顶部视图
         topView.snp_makeConstraints { (make) -> Void in

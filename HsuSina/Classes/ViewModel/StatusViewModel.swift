@@ -44,14 +44,34 @@ class StatusViewModel: CustomStringConvertible {
         default: return nil
         }
     }
+    
+    /// 缩略图 URL 数组
+    var thumbnailUrls: [NSURL]?
+
     ///  构造函数
     init(status: XNStatus) {
         self.status = status
+        
+        // 根据模型.来创建缩略图的数组
+        if status.pic_url?.count > 0 {
+        
+            //创建缩略图数组
+            thumbnailUrls = [NSURL]()
+            
+            // 遍历字典数组
+            for dict in status.pic_url! {
+            
+                let url = NSURL(string: dict["thumbnail_pic"]!)
+                
+                thumbnailUrls?.append(url!)
+            }
+        }
+        
     
     }
     ///  描述信息
     var description: String {
-        return status.description
+        return status.description + "配图数组 \(thumbnailUrls ?? [] as NSArray)"
     }
     
 }

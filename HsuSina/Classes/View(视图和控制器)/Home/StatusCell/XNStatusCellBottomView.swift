@@ -72,7 +72,7 @@ extension XNStatusCellBottomView {
         addSubview(sep2)
         
         // 布局
-        let w = 0.5
+        let w = 1
         let scale = 0.4
         
         sep1.snp_makeConstraints { (make) -> Void in
