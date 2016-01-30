@@ -8,7 +8,7 @@
 import UIKit
 
 /// 单条微博视图模型
-class StatusViewModel {
+class StatusViewModel: CustomStringConvertible {
     
     ///  微博模型
     var status: XNStatus
@@ -48,6 +48,10 @@ class StatusViewModel {
     init(status: XNStatus) {
         self.status = status
     
+    }
+    ///  描述信息
+    var description: String {
+        return status.description
     }
     
 }

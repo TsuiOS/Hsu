@@ -17,6 +17,8 @@ class XNStatus: NSObject {
     var text: String?
     /// 微博创建时间
     var created_at: String?
+    /// 缩略图配图数组 key: thumbnail_pic
+    var pic_url: [String: String]?
     /// 微博来源
     var source: String?
     ///  用户模型
@@ -41,7 +43,7 @@ class XNStatus: NSObject {
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
     
     override var description: String {
-        let keys = ["id", "text", "created_at", "source", "user"]
+        let keys = ["id", "text", "created_at", "source", "user","pic_url"]
         
         return dictionaryWithValuesForKeys(keys).description
     }
