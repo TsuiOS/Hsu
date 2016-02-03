@@ -14,7 +14,15 @@ class StatusViewModel: CustomStringConvertible {
     var status: XNStatus
     
     /// 缓存行高
-    var rowHeight: CGFloat?
+    lazy var rowHeight: CGFloat = {
+        
+        //1. cell
+        let cell = XNStatusCell(style: .Default, reuseIdentifier: XNStatusCellNormalId)
+        
+        //2. 计算高度
+        return cell.rowHeight(self)
+    
+    }()
     
     /// 用户头像 url
     var userProfileURL: NSURL {

@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 /// 微博 Cell 的可重用表示符号
-private let XNStatusCellNormalId = "XNStatusCellNormalId"
+let XNStatusCellNormalId = "XNStatusCellNormalId"
 
 class XNHomeTableViewController: XNVisitorTableViewController {
 
@@ -73,22 +73,8 @@ extension XNHomeTableViewController {
     // 如果行高是固定值,就不要实现行高代理方法
     // 实际开发中,行高一定要缓存
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // 1. 视图模型
-        let vm = listViewModel.statusList[indexPath.row]
-        
-        //判断是否有缓存行高
-        if vm.rowHeight != nil {
-            return vm.rowHeight!
-        
-        }
-        
-        //2. cell
-        let cell = XNStatusCell(style: .Default, reuseIdentifier: XNStatusCellNormalId)
-        
-        //3. 计算高度
-        vm.rowHeight = cell.rowHeight(vm)
 
-        return vm.rowHeight!
+        return listViewModel.statusList[indexPath.row].rowHeight
     }
 
 }
