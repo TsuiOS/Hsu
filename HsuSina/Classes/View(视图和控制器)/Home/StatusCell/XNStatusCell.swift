@@ -21,6 +21,14 @@ class XNStatusCell: UITableViewCell {
         didSet {
             topView.viewModel = viewModel
             contentLable.text = viewModel?.status.text
+            
+            pictureView.viewModel = viewModel
+            // 测试修改配图视图高度
+            pictureView.snp_updateConstraints { (make) -> Void in
+                make.height.equalTo(pictureView.bounds.height)
+                make.width.equalTo(pictureView.bounds.width)
+                
+            }
         }
     }
     // MARK : - 构造函数
@@ -89,11 +97,7 @@ extension XNStatusCell {
             make.left.equalTo(contentView.snp_left)
             make.right.equalTo(contentView.snp_right)
             make.height.equalTo(44)
-            
-            // 指定向下的约束
-            make.bottom.equalTo(contentView.snp_bottom)
+        
         }
-    
     }
-
 }
