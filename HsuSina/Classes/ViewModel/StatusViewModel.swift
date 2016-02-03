@@ -13,6 +13,9 @@ class StatusViewModel: CustomStringConvertible {
     ///  微博模型
     var status: XNStatus
     
+    /// 缓存行高
+    var rowHeight: CGFloat?
+    
     /// 用户头像 url
     var userProfileURL: NSURL {
         return NSURL(string: status.user?.profile_image_url ?? "")!
