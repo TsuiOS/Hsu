@@ -37,7 +37,6 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         tableView.separatorStyle = .None
         // 自动计算行高 - 需要制定一个自上而下的自动布局控件,指定一个向下的约束
         tableView.estimatedRowHeight = 400
-        tableView.rowHeight = 400
     
     }
     
@@ -70,6 +69,17 @@ extension XNHomeTableViewController {
         cell.viewModel = listViewModel.statusList[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // 1. 视图模型
+        let vm = listViewModel.statusList[indexPath.row]
+        
+        //2. cell
+        let cell = XNStatusCell(style: .Default, reuseIdentifier: XNStatusCellNormalId)
+        
+        //3. 返回高度
+        return cell.rowHeight(vm)
     }
 
 }

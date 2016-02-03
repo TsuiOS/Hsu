@@ -31,6 +31,24 @@ class XNStatusCell: UITableViewCell {
             }
         }
     }
+    ///  根据指定的视图模型计算行高
+    ///
+    ///  - parameter vm: 视图模型
+    ///
+    ///  - returns: 返回视图模型对应的行高
+    func rowHeight(vm: StatusViewModel) -> CGFloat {
+        // 1. 记录视图模型
+        viewModel = vm
+        
+        //2. 强制更新所有约束
+        contentView.layoutIfNeeded()
+        
+        //3. 返回底部视图的最大的高度
+        return CGRectGetMaxY(bottomView.frame)
+    
+    
+    }
+    
     // MARK : - 构造函数
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
