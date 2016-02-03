@@ -10,6 +10,8 @@ import UIKit
 
 /// 照片之间的间距
 private let StatusPictureViewItemMargin: CGFloat = 8
+/// 可重用表示符号
+private let StatusPictureCellId = "StatusPictureCellId"
 
 class XNStatusPictureView: UICollectionView {
     
@@ -18,13 +20,14 @@ class XNStatusPictureView: UICollectionView {
         didSet {
             // 自动计算大小
             sizeToFit()
+            
+            // 刷新数据
+            reloadData()
         }
     }
     
     override func sizeThatFits(size: CGSize) -> CGSize {
-        print(calcViewSize())
         return calcViewSize()
-//        return CGSize(width: 200, height: 90 * (random() % 4))
 
     }
     
@@ -32,10 +35,20 @@ class XNStatusPictureView: UICollectionView {
     init() {
         let layout = UICollectionViewFlowLayout()
         
+        // 设置间距
+        layout.minimumInteritemSpacing = StatusPictureViewItemMargin
+        layout.minimumLineSpacing = StatusPictureViewItemMargin
+        
         super.init(frame: CGRectZero, collectionViewLayout: layout)
         
         backgroundColor = UIColor(white: 0.8, alpha: 1.0)
-    
+        
+        // 设置数据源
+        //自己当自己的数据源
+        dataSource = self
+        
+        // 注册可重用 cell
+        registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: StatusPictureCellId)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +56,23 @@ class XNStatusPictureView: UICollectionView {
     }
 
 }
+
+// MARK: - UICollectionViewDataSource
+extension XNStatusPictureView: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.thumbnailUrls?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StatusPictureCellId, forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.redColor()
+        
+        return cell
+        
+    }
+}
+
 // MARK: - 计算视图大小
 extension XNStatusPictureView {
     
