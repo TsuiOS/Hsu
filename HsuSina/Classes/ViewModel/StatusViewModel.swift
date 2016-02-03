@@ -52,17 +52,18 @@ class StatusViewModel: CustomStringConvertible {
     init(status: XNStatus) {
         self.status = status
         
+        print(status.pic_urls?.count)
         // 根据模型.来创建缩略图的数组
-        if status.pic_url?.count > 0 {
+        if status.pic_urls?.count > 0 {
         
             //创建缩略图数组
             thumbnailUrls = [NSURL]()
             
             // 遍历字典数组
-            for dict in status.pic_url! {
+            for dict in status.pic_urls! {
             
                 let url = NSURL(string: dict["thumbnail_pic"]!)
-                
+                print("------" + dict["thumbnail_pic"]!)
                 thumbnailUrls?.append(url!)
             }
         }
