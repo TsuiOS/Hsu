@@ -63,7 +63,6 @@ class StatusViewModel: CustomStringConvertible {
             for dict in status.pic_urls! {
             
                 let url = NSURL(string: dict["thumbnail_pic"]!)
-                print("------" + dict["thumbnail_pic"]!)
                 thumbnailUrls?.append(url!)
             }
         }

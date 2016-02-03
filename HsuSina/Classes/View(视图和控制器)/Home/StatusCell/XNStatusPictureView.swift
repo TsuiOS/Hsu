@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 /// 照片之间的间距
 private let StatusPictureViewItemMargin: CGFloat = 8
 /// 可重用表示符号
@@ -48,7 +48,7 @@ class XNStatusPictureView: UICollectionView {
         dataSource = self
         
         // 注册可重用 cell
-        registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: StatusPictureCellId)
+        registerClass(StatusPictureViewCell.self, forCellWithReuseIdentifier: StatusPictureCellId)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,8 +65,8 @@ extension XNStatusPictureView: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StatusPictureCellId, forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.redColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StatusPictureCellId, forIndexPath: indexPath) as! StatusPictureViewCell
+        cell.imageURL = viewModel?.thumbnailUrls![indexPath.item]
         
         return cell
         
@@ -117,7 +117,7 @@ extension XNStatusPictureView {
             return CGSize(width: with, height: with)
         }
         // 4> 其他的情况
-        let row = CGFloat((count - 1) / Int(rowCount) + 1)//ceil(CGFloat(count) / rowCount)
+        let row = ceil(CGFloat(count) / rowCount)
         let h = row * itemWith + (row - 1) * StatusPictureViewItemMargin
         let w = maxWith
         
@@ -126,4 +126,45 @@ extension XNStatusPictureView {
     }
 
 }
+
+private class StatusPictureViewCell: UICollectionViewCell {
+    
+    var imageURL: NSURL? {
+        didSet {
+            iconView.sd_setImageWithURL(imageURL,
+                placeholderImage: nil,
+                options: [SDWebImageOptions.RetryFailed,SDWebImageOptions.RefreshCached])
+            //SDWebImageOptions.RetryFailed,SDWebImageOptions.RefreshCached
+        }
+    }
+    
+    // MARK : - 构造函数
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setupUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        //1 添加控件
+        contentView.addSubview(iconView)
+        
+        //2. 设置布局
+        iconView.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(contentView.snp_edges)
+        }
+    
+    
+    }
+    
+    // MARK : - 懒加载控件
+    private lazy var iconView: UIImageView = UIImageView()
+
+
+}
+
 
