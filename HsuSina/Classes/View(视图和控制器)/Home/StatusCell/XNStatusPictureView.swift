@@ -20,7 +20,6 @@ class XNStatusPictureView: UICollectionView {
         didSet {
             // 自动计算大小
             sizeToFit()
-            
             // 刷新数据
             reloadData()
         }

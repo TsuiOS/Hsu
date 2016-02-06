@@ -23,6 +23,8 @@ class XNStatus: NSObject {
     var source: String?
     ///  用户模型
     var user: XNUser?
+    /// 被转发的原微博信息字段
+    var retweeted_status: XNStatus?
 
     init(dict: [String: AnyObject]) {
         super.init()
@@ -37,13 +39,21 @@ class XNStatus: NSObject {
             }
             return
         }
+        // 判断 key 是否是retweeted_status
+        if key == "retweeted_status" {
+            if let dict = value as? [String: AnyObject] {
+            
+                retweeted_status = XNStatus(dict: dict)
+            }
+            return
+        }
         super.setValue(value, forKey: key)
     }
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
     
     override var description: String {
-        let keys = ["id", "text", "created_at", "source", "user","pic_urls"]
+        let keys = ["id", "text", "created_at", "source", "user","pic_urls","retweeted_status"]
         
         return dictionaryWithValuesForKeys(keys).description
     }
