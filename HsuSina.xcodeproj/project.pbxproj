@@ -252,10 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				04F3DAAE1C5A8A5B0047FEC0 /* XNStatusCell.swift */,
+				048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */,
 				04F3DAB01C5A8A750047FEC0 /* XNStatusCellTopView.swift */,
 				04F3DAB21C5A8A8D0047FEC0 /* XNStatusCellBottomView.swift */,
 				04CC8D491C5CDAF000B26EFB /* XNStatusPictureView.swift */,
-				048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */,
 			);
 			path = StatusCell;
 			sourceTree = "<group>";

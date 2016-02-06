@@ -29,8 +29,8 @@ class XNStatusCell: UITableViewCell {
                 make.width.equalTo(pictureView.bounds.width)
                 
                 // 根据配图的数量,决定配图视图的顶部间距
-                let offset = viewModel?.thumbnailUrls?.count > 0 ? StatusCellMargin : 0
-                make.top.equalTo(contentLable.snp_bottom).offset(offset)
+//                let offset = viewModel?.thumbnailUrls?.count > 0 ? StatusCellMargin : 0
+//                make.top.equalTo(contentLable.snp_bottom).offset(offset)
                 
             }
         }
@@ -70,21 +70,21 @@ class XNStatusCell: UITableViewCell {
     /// 顶部视图
     private lazy var topView: XNStatusCellTopView = XNStatusCellTopView()
     /// 微博正文
-    private lazy var contentLable: UILabel = UILabel(title: "微博正文",
+    lazy var contentLable: UILabel = UILabel(title: "微博正文",
                                                      color:  UIColor.darkGrayColor(),
                                                   fontSize: 15,
                                                screenInset: StatusCellMargin)
     /// 配图视图
-    private lazy var pictureView: XNStatusPictureView = XNStatusPictureView()
+    lazy var pictureView: XNStatusPictureView = XNStatusPictureView()
     /// 底部视图
-    private lazy var bottomView: XNStatusCellBottomView = XNStatusCellBottomView()
+    lazy var bottomView: XNStatusCellBottomView = XNStatusCellBottomView()
     
 }
 
 // MARK: - 设置界面
 extension XNStatusCell {
 
-    private func setupUI() {
+    func setupUI() {
         //1. 添加控件
         contentView.addSubview(topView)
         contentView.addSubview(contentLable)
@@ -107,12 +107,10 @@ extension XNStatusCell {
 
         }
         // 配图视图
-        pictureView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentLable)
-//            make.width.equalTo(300)
-//            make.height.equalTo(90)
-        }
+//        pictureView.snp_makeConstraints { (make) -> Void in
+//            make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
+//            make.left.equalTo(contentLable)
+//        }
         // 底部视图
         bottomView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(pictureView.snp_bottom).offset(StatusCellMargin)
