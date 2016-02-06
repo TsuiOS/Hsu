@@ -11,6 +11,7 @@
 		0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */; };
 		0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C6011C55C42200297C41 /* XNVisitorView.swift */; };
 		048D57D61C65C90200AAAAEF /* XNStatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */; };
+		048D57D81C65F5E700AAAAEF /* XNStatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D57D71C65F5E700AAAAEF /* XNStatusNormalCell.swift */; };
 		0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490593E1C55060D00B1EC79 /* AppDelegate.swift */; };
 		049059461C55060D00B1EC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049059451C55060D00B1EC79 /* Assets.xcassets */; };
 		04957F071C572155002C6FCC /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04957F061C572155002C6FCC /* NetworkTools.swift */; };
@@ -43,6 +44,7 @@
 		0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorTableViewController.swift; sourceTree = "<group>"; };
 		0439C6011C55C42200297C41 /* XNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorView.swift; sourceTree = "<group>"; };
 		048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatusRetweetedCell.swift; sourceTree = "<group>"; };
+		048D57D71C65F5E700AAAAEF /* XNStatusNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatusNormalCell.swift; sourceTree = "<group>"; };
 		0490593B1C55060D00B1EC79 /* HsuSina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsuSina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0490593E1C55060D00B1EC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049059451C55060D00B1EC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				04F3DAAE1C5A8A5B0047FEC0 /* XNStatusCell.swift */,
+				048D57D71C65F5E700AAAAEF /* XNStatusNormalCell.swift */,
 				048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */,
 				04F3DAB01C5A8A750047FEC0 /* XNStatusCellTopView.swift */,
 				04F3DAB21C5A8A8D0047FEC0 /* XNStatusCellBottomView.swift */,
@@ -404,6 +407,7 @@
 				04B554381C5522AF001C9D47 /* XNHomeTableViewController.swift in Sources */,
 				04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */,
 				04F3DAB11C5A8A750047FEC0 /* XNStatusCellTopView.swift in Sources */,
+				048D57D81C65F5E700AAAAEF /* XNStatusNormalCell.swift in Sources */,
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,
 				04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */,
 				0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */,

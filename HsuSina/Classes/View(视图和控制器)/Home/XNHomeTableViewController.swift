@@ -34,7 +34,7 @@ class XNHomeTableViewController: XNVisitorTableViewController {
     private func preferTableView() {
         
         //注册可重用 cell
-//        tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+        tableView.registerClass(XNStatusNormalCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
         tableView.registerClass(XNStatusRetweetedCell.self, forCellReuseIdentifier: XNStatusCellRetweetedId)
         
         //取消分割线
@@ -69,10 +69,14 @@ extension XNHomeTableViewController {
         return listViewModel.statusList.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellRetweetedId, forIndexPath: indexPath) as! XNStatusRetweetedCell
+       
+        //1. 获取视图模型
+        let vm = listViewModel.statusList[indexPath.row]
         
-        cell.viewModel = listViewModel.statusList[indexPath.row]
+        //2. 获取可重用 cell 会自动调用行高方法
+        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellRetweetedId, forIndexPath: indexPath) as! XNStatusCell
         
+        cell.viewModel = vm
         return cell
     }
     // 如果行高是固定值,就不要实现行高代理方法

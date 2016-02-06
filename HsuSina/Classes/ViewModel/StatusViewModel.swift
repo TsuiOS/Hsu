@@ -13,12 +13,24 @@ class StatusViewModel: CustomStringConvertible {
     ///  微博模型
     var status: XNStatus
     
+    /// 表格的可重用标识符
+    var cellID: String {
+    
+        return status.retweeted_status != nil ? XNStatusCellRetweetedId : XNStatusCellNormalId
+    }
+    
     /// 缓存行高
     lazy var rowHeight: CGFloat = {
         
         //1. cell
-        let cell = XNStatusRetweetedCell(style: .Default, reuseIdentifier: XNStatusCellRetweetedId)
-        
+        // 定义 cell 
+        var cell: XNStatusCell
+        // 根据是否是转发微博,决定 cell 的创建
+        if self.status.retweeted_status != nil {
+              cell = XNStatusRetweetedCell(style: .Default, reuseIdentifier: XNStatusCellRetweetedId)
+        } else {
+            cell = XNStatusNormalCell(style: .Default, reuseIdentifier: XNStatusCellNormalId)
+        }
         //2. 计算高度
         return cell.rowHeight(self)
     
