@@ -60,7 +60,18 @@ class StatusViewModel: CustomStringConvertible {
     /// 原创微博,可以有图,可以没有图
     /// 转发微博,一定没有图 retweeted_status中可以有配图,也可以没有配图
     var thumbnailUrls: [NSURL]?
-
+    
+    /// 转发微博内容
+    var retweetedText: String? {
+    
+        //1. 判断是否是转发微博,如果不是直接返回 nil
+        guard let s = status.retweeted_status else {
+            return nil
+        }
+        // 2. s 就是转发微博
+        return "@" + (s.user?.screen_name ?? "") + ":" +  (s.text ?? "")
+    }
+    
     ///  构造函数
     init(status: XNStatus) {
         self.status = status

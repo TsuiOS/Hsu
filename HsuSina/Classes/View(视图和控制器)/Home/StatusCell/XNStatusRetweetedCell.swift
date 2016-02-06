@@ -11,6 +11,21 @@ import UIKit
 /// 转发微博 cell
 class XNStatusRetweetedCell: XNStatusCell {
     
+    /// 微博视图模型
+   override var viewModel: StatusViewModel? {
+        didSet {
+            // 转发微博的文字
+            retweetedLabel.text = viewModel?.retweetedText
+            print(viewModel?.retweetedText)
+
+            pictureView.snp_updateConstraints { (make) -> Void in
+                // 根据配图的数量,决定配图视图的顶部间距
+                let offset = viewModel?.thumbnailUrls?.count > 0 ? StatusCellMargin : 0
+                make.top.equalTo(retweetedLabel.snp_bottom).offset(offset)
+                
+            }
+        }
+    }
     // MARK : - 懒加载控件
     /// 背景按钮
     private lazy var backButton: UIButton = {
@@ -53,8 +68,8 @@ extension XNStatusRetweetedCell {
         }
         //3> 配图视图
         pictureView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentLable)
+            make.top.equalTo(retweetedLabel.snp_bottom).offset(StatusCellMargin)
+            make.left.equalTo(retweetedLabel)
         }
         
         
