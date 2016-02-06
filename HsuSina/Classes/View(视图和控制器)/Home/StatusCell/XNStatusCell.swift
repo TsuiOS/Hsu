@@ -28,6 +28,10 @@ class XNStatusCell: UITableViewCell {
                 make.height.equalTo(pictureView.bounds.height)
                 make.width.equalTo(pictureView.bounds.width)
                 
+                // 根据配图的数量,决定配图视图的顶部间距
+                let offset = viewModel?.thumbnailUrls?.count > 0 ? StatusCellMargin : 0
+                make.top.equalTo(contentLable.snp_bottom).offset(offset)
+                
             }
         }
     }
@@ -106,8 +110,8 @@ extension XNStatusCell {
         pictureView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentLable.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(contentLable)
-            make.width.equalTo(300)
-            make.height.equalTo(90)
+//            make.width.equalTo(300)
+//            make.height.equalTo(90)
         }
         // 底部视图
         bottomView.snp_makeConstraints { (make) -> Void in

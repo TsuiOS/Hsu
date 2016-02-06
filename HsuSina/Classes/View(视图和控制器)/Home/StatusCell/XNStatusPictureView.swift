@@ -162,7 +162,16 @@ private class StatusPictureViewCell: UICollectionViewCell {
     }
     
     // MARK : - 懒加载控件
-    private lazy var iconView: UIImageView = UIImageView()
+    private lazy var iconView: UIImageView = {
+        let iv = UIImageView()
+        
+        //设置填充模式
+        iv.contentMode = UIViewContentMode.ScaleAspectFill
+        //需要裁剪图片
+        iv.clipsToBounds = true
+        
+        return iv
+    }()
 
 
 }

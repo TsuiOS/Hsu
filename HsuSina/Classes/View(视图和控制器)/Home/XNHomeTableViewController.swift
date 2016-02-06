@@ -35,7 +35,8 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
         //取消分割线
         tableView.separatorStyle = .None
-        // 自动计算行高 - 需要制定一个自上而下的自动布局控件,指定一个向下的约束
+        
+        //预估行高
         tableView.estimatedRowHeight = 400
     
     }
