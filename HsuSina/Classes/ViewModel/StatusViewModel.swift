@@ -17,7 +17,7 @@ class StatusViewModel: CustomStringConvertible {
     lazy var rowHeight: CGFloat = {
         
         //1. cell
-        let cell = XNStatusCell(style: .Default, reuseIdentifier: XNStatusCellNormalId)
+        let cell = XNStatusRetweetedCell(style: .Default, reuseIdentifier: XNStatusCellRetweetedId)
         
         //2. 计算高度
         return cell.rowHeight(self)

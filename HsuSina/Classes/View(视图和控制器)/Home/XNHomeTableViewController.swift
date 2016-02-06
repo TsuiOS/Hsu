@@ -11,6 +11,8 @@ import SVProgressHUD
 
 /// 微博 Cell 的可重用表示符号
 let XNStatusCellNormalId = "XNStatusCellNormalId"
+/// 转发微博的可重用 ID
+let XNStatusCellRetweetedId = "XNStatusCellRetweetedId"
 
 class XNHomeTableViewController: XNVisitorTableViewController {
 
@@ -32,7 +34,9 @@ class XNHomeTableViewController: XNVisitorTableViewController {
     private func preferTableView() {
         
         //注册可重用 cell
-        tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+//        tableView.registerClass(XNStatusCell.self, forCellReuseIdentifier: XNStatusCellNormalId)
+        tableView.registerClass(XNStatusRetweetedCell.self, forCellReuseIdentifier: XNStatusCellRetweetedId)
+        
         //取消分割线
         tableView.separatorStyle = .None
         
@@ -65,7 +69,7 @@ extension XNHomeTableViewController {
         return listViewModel.statusList.count
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellNormalId, forIndexPath: indexPath) as! XNStatusCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellRetweetedId, forIndexPath: indexPath) as! XNStatusRetweetedCell
         
         cell.viewModel = listViewModel.statusList[indexPath.row]
         
