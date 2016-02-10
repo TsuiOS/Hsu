@@ -16,7 +16,7 @@ class XNStatusRetweetedCell: XNStatusCell {
         didSet {
             // 转发微博的文字
             retweetedLabel.text = viewModel?.retweetedText
-            print(viewModel?.retweetedText)
+            //print(viewModel?.retweetedText)
 
             pictureView.snp_updateConstraints { (make) -> Void in
                 // 根据配图的数量,决定配图视图的顶部间距

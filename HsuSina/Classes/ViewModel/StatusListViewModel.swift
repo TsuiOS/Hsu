@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 /// 微博数据列表模型
 class StatusListViewModel {
@@ -44,9 +45,55 @@ class StatusListViewModel {
             
             //4. 完成的回调
             finished(isSuccessed: true)
+            
+            self.cacheSingleImage(dataList)
 
         }
-
+    }
+    
+    ///  缓存单张图片
+    private func cacheSingleImage(dataList: [StatusViewModel]) {
+    
+        // 1. 创建调度组
+        let group = dispatch_group_create()
+        
+        // 缓存收据长度
+        var dataLength = 0
+        
+        for vm in dataList {
+        
+            // 判断图片数量是否是单张图片
+            if vm.thumbnailUrls?.count != 1 {
+                continue
+            }
+            // 获取 url
+            let url = vm.thumbnailUrls![0]
+            print("开始缓存图像 \(url)")
+            //SDWebimage下载图像
+            
+            // 入组
+            dispatch_group_enter(group)
+            
+            SDWebImageManager.sharedManager().downloadImageWithURL(url,
+                options: [],
+                progress: nil,
+                completed: { (image, _, _, _, _) -> Void in
+                    
+                    // 单张图片下载完成
+                    if let img = image,
+                        let data = UIImagePNGRepresentation(img){
+                            
+                            //累加二进制数据的长度
+                            dataLength += data.length
+                    }
+                    // 出组
+                    dispatch_group_leave(group)
+            })
+        }
+        //3. 监听调度组完成
+        dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            print("缓存完成 \(dataLength / 1024) K")
+        }
     }
     
 }

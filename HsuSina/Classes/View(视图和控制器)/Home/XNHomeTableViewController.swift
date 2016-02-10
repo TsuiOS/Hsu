@@ -54,7 +54,7 @@ class XNHomeTableViewController: XNVisitorTableViewController {
                 return
             }
             //测试数据
-            print(self.listViewModel.statusList)
+//            print(self.listViewModel.statusList)pri
             //4. 刷新数据
             self.tableView.reloadData()
         }
