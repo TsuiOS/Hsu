@@ -107,7 +107,7 @@ extension XNStatusPictureView {
             // 命名规则 完整 url 字符串 -> MD5
             if let key = viewModel?.thumbnailUrls?.first?.absoluteString {
             
-                print(key)
+                print("----\(key)")
                 let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
                 size = image.size
             

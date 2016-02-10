@@ -102,8 +102,6 @@ class StatusViewModel: CustomStringConvertible {
                 thumbnailUrls?.append(url!)
             }
         }
-        
-    
     }
     ///  描述信息
     var description: String {

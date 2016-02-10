@@ -43,9 +43,6 @@ class StatusListViewModel {
             //3. 拼接数据
             self.statusList = dataList + self.statusList
             
-            //4. 完成的回调
-            finished(isSuccessed: true)
-            
             self.cacheSingleImage(dataList,finished: finished)
 
         }

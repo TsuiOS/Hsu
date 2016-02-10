@@ -74,7 +74,7 @@ extension XNHomeTableViewController {
         let vm = listViewModel.statusList[indexPath.row]
         
         //2. 获取可重用 cell 会自动调用行高方法
-        let cell = tableView.dequeueReusableCellWithIdentifier(XNStatusCellRetweetedId, forIndexPath: indexPath) as! XNStatusCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(vm.cellID, forIndexPath: indexPath) as! XNStatusCell
         
         cell.viewModel = vm
         return cell
