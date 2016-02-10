@@ -112,6 +112,17 @@ extension XNStatusPictureView {
                 size = image.size
             
             }
+            // 过窄处理
+            size.width = size.width < 40 ? 40 : size.width
+            
+            //过宽的图片
+            if size.width > 300 {
+                let w: CGFloat = 300
+                let h = size.height * w / size.width
+                
+                size = CGSize(width: w, height: h)
+            
+            }
             
             //设置内部图片的大小
             layout.itemSize = size
