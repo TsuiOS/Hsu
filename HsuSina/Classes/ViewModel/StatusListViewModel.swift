@@ -46,13 +46,13 @@ class StatusListViewModel {
             //4. 完成的回调
             finished(isSuccessed: true)
             
-            self.cacheSingleImage(dataList)
+            self.cacheSingleImage(dataList,finished: finished)
 
         }
     }
     
     ///  缓存单张图片
-    private func cacheSingleImage(dataList: [StatusViewModel]) {
+    private func cacheSingleImage(dataList: [StatusViewModel], finished: (isSuccessed: Bool)->()) {
     
         // 1. 创建调度组
         let group = dispatch_group_create()
@@ -75,7 +75,7 @@ class StatusListViewModel {
             dispatch_group_enter(group)
             
             SDWebImageManager.sharedManager().downloadImageWithURL(url,
-                options: [],
+                options: [SDWebImageOptions.RefreshCached, SDWebImageOptions.RetryFailed],
                 progress: nil,
                 completed: { (image, _, _, _, _) -> Void in
                     
@@ -93,6 +93,9 @@ class StatusListViewModel {
         //3. 监听调度组完成
         dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
             print("缓存完成 \(dataLength / 1024) K")
+            
+            // 完成回调 - 控制器才开始刷新表格
+            finished(isSuccessed: true)
         }
     }
     

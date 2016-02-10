@@ -70,6 +70,8 @@ extension XNStatusRetweetedCell {
         pictureView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(retweetedLabel.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(retweetedLabel)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
         }
         
         

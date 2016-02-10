@@ -101,7 +101,17 @@ extension XNStatusPictureView {
         //2> 一张配图
         if count == 1 {
             // 暂时指定大小
-            let size = CGSize(width: 150, height: 120)
+            var size = CGSize(width: 150, height: 120)
+            
+            // 利用 SDWebImage 检查本地的缓存图像
+            // 命名规则 完整 url 字符串 -> MD5
+            if let key = viewModel?.thumbnailUrls?.first?.absoluteString {
+            
+                print(key)
+                let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
+                size = image.size
+            
+            }
             
             //设置内部图片的大小
             layout.itemSize = size
