@@ -10,9 +10,24 @@ import UIKit
 
 class XNMainViewController: UITabBarController {
 
-    ///  监听方法
+    // MARK : - 监听方法
+    /// 点击撰写按钮
+    /// 如果`单纯`使用 `private` 运行循环将无法正确发送消息，导致崩溃
+    /// 如果使用 @objc 修饰符号，可以保证运行循环能够发送此消息，即使函数被标记为 private
     @objc private func clickComposeButton() {
-        print("点我了")
+        
+        // 判断用户是否登录
+        var vc: UIViewController
+        if UserAccountViewModel.sharedUserAccount.userLogon {
+            vc = XNCompseViewController()
+        } else {
+            vc = XNOAuthViewController()
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
+        
+        presentViewController(nav, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
