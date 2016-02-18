@@ -11,6 +11,7 @@
 		0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */; };
 		0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C6011C55C42200297C41 /* XNVisitorView.swift */; };
 		046DEFA01C73488D0097B2CB /* XNCompseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046DEF9F1C73488D0097B2CB /* XNCompseViewController.swift */; };
+		0479B10E1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479B10D1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift */; };
 		048D57D61C65C90200AAAAEF /* XNStatusRetweetedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */; };
 		048D57D81C65F5E700AAAAEF /* XNStatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D57D71C65F5E700AAAAEF /* XNStatusNormalCell.swift */; };
 		0490593F1C55060D00B1EC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490593E1C55060D00B1EC79 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 		0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorTableViewController.swift; sourceTree = "<group>"; };
 		0439C6011C55C42200297C41 /* XNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorView.swift; sourceTree = "<group>"; };
 		046DEF9F1C73488D0097B2CB /* XNCompseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNCompseViewController.swift; sourceTree = "<group>"; };
+		0479B10D1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		048D57D51C65C90200AAAAEF /* XNStatusRetweetedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatusRetweetedCell.swift; sourceTree = "<group>"; };
 		048D57D71C65F5E700AAAAEF /* XNStatusNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatusNormalCell.swift; sourceTree = "<group>"; };
 		0490593B1C55060D00B1EC79 /* HsuSina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsuSina.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 				04B554441C552EC8001C9D47 /* UIButton+Extension.swift */,
 				0498C3E91C561A3D0067798D /* UILable+Extension.swift */,
 				0498C3EB1C561EAB0067798D /* UIImageView+Extension.swift */,
+				0479B10D1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04957F0C1C572D0F002C6FCC /* XNOAuthViewController.swift in Sources */,
 				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
+				0479B10E1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift in Sources */,
 				04CC8D4A1C5CDAF000B26EFB /* XNStatusPictureView.swift in Sources */,
 				04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */,
 				04957F071C572155002C6FCC /* NetworkTools.swift in Sources */,

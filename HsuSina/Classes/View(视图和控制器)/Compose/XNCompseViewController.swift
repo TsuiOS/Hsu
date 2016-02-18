@@ -75,16 +75,11 @@ private extension XNCompseViewController {
         var items = [UIBarButtonItem]()
         
         for dict in itemSettings {
-        
-            let button = UIButton(imageName: dict["imageName"]!, backgroundImageName: nil)
             
-            // 判断 actionName
-            if let actionName = dict["actionName"] {
+            let item = UIBarButtonItem(imageName: dict["imageName"]!,
+                target: self,
+                actionName: dict["actionName"])
             
-                button.addTarget(self, action: Selector(actionName), forControlEvents: .TouchUpInside)
-            }
-            
-            let item = UIBarButtonItem(customView: button)
             items.append(item)
             
             // 添加弹簧
