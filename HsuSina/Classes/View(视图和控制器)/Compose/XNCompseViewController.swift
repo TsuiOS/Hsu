@@ -20,6 +20,10 @@ class XNCompseViewController: UIViewController {
     
         print("发布微博")
     }
+    ///  选择表情
+    @objc private func selectEmoticon() {
+        print("选择表情")
+    }
     
     // MARK : - 视图声明周期
     override func loadView() {
@@ -27,6 +31,11 @@ class XNCompseViewController: UIViewController {
         
         setupUI()
     }
+    
+    // MARK: - 懒加载控件
+    
+    /// 工具条
+    private lazy var toolbar = UIToolbar()
 }
 
 // MARK: - 设置界面
@@ -38,6 +47,53 @@ private extension XNCompseViewController {
         
         // 设置控件
         prepareNavigationBar()
+        prepareToolbar()
+    }
+    
+    ///  准备工具条
+    private func prepareToolbar() {
+        
+        //1. 添加控件
+        view.addSubview(toolbar)
+        
+        toolbar.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
+        
+        //2. 自动布局
+        toolbar.snp_makeConstraints { (make) -> Void in
+            make.bottom.equalTo(view)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.height.equalTo(44)
+        }
+        //3. 添加按钮
+        let itemSettings = [["imageName": "compose_toolbar_picture"],
+            ["imageName": "compose_mentionbutton_background"],
+            ["imageName": "compose_trendbutton_background"],
+            ["imageName": "compose_emoticonbutton_background", "actionName": "selectEmoticon"],
+            ["imageName": "compose_addbutton_background"]]
+        
+        var items = [UIBarButtonItem]()
+        
+        for dict in itemSettings {
+        
+            let button = UIButton(imageName: dict["imageName"]!, backgroundImageName: nil)
+            
+            // 判断 actionName
+            if let actionName = dict["actionName"] {
+            
+                button.addTarget(self, action: Selector(actionName), forControlEvents: .TouchUpInside)
+            }
+            
+            let item = UIBarButtonItem(customView: button)
+            items.append(item)
+            
+            // 添加弹簧
+            items.append(UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil))
+        }
+        items.removeLast()
+        
+        toolbar.items = items
+    
     }
     
     ///  设置导航栏
@@ -48,7 +104,7 @@ private extension XNCompseViewController {
         
          navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Plain, target: self, action: "sendStatus")
         
-        //2. 设置标题
+        //2. 设置标题 方式一
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 36))
         navigationItem.titleView = titleView
         
@@ -71,6 +127,34 @@ private extension XNCompseViewController {
             make.bottom.equalTo(titleView.snp_bottom)
         }
 
+        
+//        // 2.标题视图 方式二
+//        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 36))
+//        navigationItem.titleView = titleView
+//        // 3.添加子控件
+//        let titleLabel = UILabel(title: "发微博\n", fontSize: 13)
+//        // 使用富文本
+//        let attr = NSMutableAttributedString()
+//        
+//        let sendAttr = NSAttributedString(string: "发微博\n",
+//            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(13)])
+//        
+//        attr.appendAttributedString(sendAttr)
+//        
+//        let nameAttr = NSAttributedString(string: UserAccountViewModel.sharedUserAccount.account?.screen_name ?? "",
+//            attributes: [NSFontAttributeName:UIFont.systemFontOfSize(10),NSForegroundColorAttributeName:UIColor.redColor()])
+//        
+//        attr.appendAttributedString(nameAttr)
+//        
+//        titleLabel.attributedText = attr
+//        
+//        titleView.addSubview(titleLabel)
+//        
+//        // 自动布局
+//        titleLabel.snp_makeConstraints { (make) -> Void in
+//            make.centerX.equalTo(titleView.snp_centerX)
+//            make.top.equalTo(titleView.snp_top)
+//        }
     
     }
 }

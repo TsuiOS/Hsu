@@ -16,14 +16,18 @@ extension UIButton {
     ///  - parameter backgroundImageName: 背景图片名称
     ///
     ///  - returns:  UIButton
-    convenience init(imageName: String, backgroundImageName: String) {
+    convenience init(imageName: String, backgroundImageName: String?) {
         self.init()
         
         setImage(UIImage(named: imageName), forState: .Normal)
-        
         setImage(UIImage(named: imageName + "_highlighted"), forState: .Highlighted)
-        setBackgroundImage(UIImage(named: backgroundImageName), forState: .Normal)
-        setBackgroundImage(UIImage(named: backgroundImageName + "_highlighted"), forState: UIControlState.Highlighted)
+        
+        if let backgroundImageName = backgroundImageName {
+            
+            setBackgroundImage(UIImage(named: backgroundImageName), forState: .Normal)
+            setBackgroundImage(UIImage(named: backgroundImageName + "_highlighted"), forState: UIControlState.Highlighted)
+        }
+       
         // 会根据背景图片的大小调整尺寸
         sizeToFit()
     }
