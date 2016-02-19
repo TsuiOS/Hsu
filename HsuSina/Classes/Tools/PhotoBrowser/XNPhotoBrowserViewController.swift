@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// 可重用 Cell 标示符号
+private let PhotoBrowserViewCellId = "PhotoBrowserViewCellId"
+
 class XNPhotoBrowserViewController: UIViewController {
 
     ///  照片 url 数组
@@ -39,8 +42,9 @@ class XNPhotoBrowserViewController: UIViewController {
     }
     
     override func loadView() {
+        let rect = UIScreen.mainScreen().bounds
         //1. 设置根视图
-        view = UIView()
+        view = UIView(frame: rect)
         
         //2. 设置界面
         setupUI()
@@ -53,13 +57,29 @@ class XNPhotoBrowserViewController: UIViewController {
     }
 
     // MARK : - 懒加载控件
-    private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: PhotoBrowserViewLayout())
     /// 关闭按钮
     private lazy var closeButton: UIButton = UIButton(title: "关闭", fontSize: 14, color: UIColor.whiteColor(), imageName: nil, backColor: UIColor.darkGrayColor())
         /// 保存按钮
     private lazy var saveButton: UIButton = UIButton(title: "保存", fontSize: 14, color: UIColor.whiteColor(), imageName: nil, backColor: UIColor.darkGrayColor())
-
     
+    // MARK: - 自定义流水布局
+    private class PhotoBrowserViewLayout: UICollectionViewFlowLayout {
+       
+        private override func prepareLayout() {
+            super.prepareLayout()
+            
+            itemSize = collectionView!.bounds.size
+            minimumInteritemSpacing = 0
+            minimumLineSpacing = 0
+            scrollDirection = .Horizontal
+            
+            collectionView?.pagingEnabled = true
+            collectionView?.bounces = false
+            
+            collectionView?.showsHorizontalScrollIndicator = false
+        }
+    }
 }
 // MARK: - 设置 UI
 private extension XNPhotoBrowserViewController {
@@ -90,7 +110,36 @@ private extension XNPhotoBrowserViewController {
         // 3. 监听方法
         closeButton.addTarget(self, action: "close", forControlEvents: .TouchUpInside)
         saveButton.addTarget(self, action: "save", forControlEvents: .TouchUpInside)
+        
+        // 4. 准备控件
+        prepareCollectionView()
+    }
+    ///  准备 collectionView
+    private func prepareCollectionView() {
+        
+        // 1. 准侧可重用 cell
+        collectionView.registerClass(XNPhotoBrowserCell.self, forCellWithReuseIdentifier: PhotoBrowserViewCellId)
+        
+        // 2. 设置数据源
+        collectionView.dataSource = self
+
+    }
+
+}
+
+// MARK: - UICollectionViewDataSource
+extension XNPhotoBrowserViewController: UICollectionViewDataSource {
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return urls.count
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserViewCellId, forIndexPath: indexPath) as! XNPhotoBrowserCell
+        
+        cell.backgroundColor = UIColor.randomColor()
+        
+        return cell
     }
 
 }
