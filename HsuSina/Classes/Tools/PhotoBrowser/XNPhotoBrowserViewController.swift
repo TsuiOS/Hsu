@@ -56,7 +56,7 @@ class XNPhotoBrowserViewController: UIViewController {
     private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
     /// 关闭按钮
     private lazy var closeButton: UIButton = UIButton(title: "关闭", fontSize: 14, color: UIColor.whiteColor(), imageName: nil, backColor: UIColor.darkGrayColor())
-    /// 保存按钮
+        /// 保存按钮
     private lazy var saveButton: UIButton = UIButton(title: "保存", fontSize: 14, color: UIColor.whiteColor(), imageName: nil, backColor: UIColor.darkGrayColor())
 
     
@@ -77,12 +77,14 @@ private extension XNPhotoBrowserViewController {
         closeButton.snp_makeConstraints { (make) -> Void in
             make.bottom.equalTo(view.snp_bottom).offset(-8)
             make.left.equalTo(view.snp_left).offset(8)
-            make.size.equalTo(CGSize(width: 100, height: 36))
+            make.height.equalTo(36)
+            make.width.equalTo(100)
         }
         saveButton.snp_makeConstraints { (make) -> Void in
             make.bottom.equalTo(view.snp_bottom).offset(-8)
             make.right.equalTo(view.snp_right).offset(-8)
-            make.size.equalTo(CGSize(width: 100, height: 36))
+            make.height.equalTo(36)
+            make.width.equalTo(100)
         }
         
         // 3. 监听方法

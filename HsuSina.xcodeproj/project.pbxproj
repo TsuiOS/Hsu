@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0403C1351C59E99600E00B97 /* XNNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */; };
+		0417A1631C77610F0043EF40 /* XNPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */; };
 		0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */; };
 		0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C6011C55C42200297C41 /* XNVisitorView.swift */; };
 		046DEFA01C73488D0097B2CB /* XNCompseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046DEF9F1C73488D0097B2CB /* XNCompseViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNNewFeatureViewController.swift; sourceTree = "<group>"; };
+		0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNPhotoBrowserCell.swift; sourceTree = "<group>"; };
 		0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorTableViewController.swift; sourceTree = "<group>"; };
 		0439C6011C55C42200297C41 /* XNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorView.swift; sourceTree = "<group>"; };
 		046DEF9F1C73488D0097B2CB /* XNCompseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNCompseViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				04EEF84B1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift */,
+				0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */,
 			);
 			name = "PhotoBrowser(图片查看)";
 			path = PhotoBrowser;
@@ -508,6 +511,7 @@
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,
 				04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */,
 				04EEF8341C772A7800CBE8CF /* PicturePickerController.swift in Sources */,
+				0417A1631C77610F0043EF40 /* XNPhotoBrowserCell.swift in Sources */,
 				04EEF84C1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift in Sources */,
 				04EEF8471C772C6400CBE8CF /* String+Emoji.swift in Sources */,
 				0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */,
