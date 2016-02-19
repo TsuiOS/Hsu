@@ -45,6 +45,8 @@ class XNStatusPictureView: UICollectionView {
         // 设置数据源
         //自己当自己的数据源
         dataSource = self
+        //设置代理
+        delegate = self
         
         // 注册可重用 cell
         registerClass(StatusPictureViewCell.self, forCellWithReuseIdentifier: StatusPictureCellId)
@@ -57,8 +59,21 @@ class XNStatusPictureView: UICollectionView {
 }
 
 // MARK: - UICollectionViewDataSource
-extension XNStatusPictureView: UICollectionViewDataSource {
+extension XNStatusPictureView: UICollectionViewDataSource,UICollectionViewDelegate {
     
+    ///  选中图片
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("点击照片 \(indexPath) \(viewModel?.thumbnailUrls)")
+        
+        // 通知：名字(通知中心监听)/object：发送通知的同时传递对象(单值)/ userInfo 传递多值的时候，使用的数据字典 -> Key
+        let userInfo = [XNStatusSelectedPhotoIndexPathKey: indexPath,
+            XNStatusSelectedPhotoURLsKey: viewModel!.thumbnailUrls!]
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(XNStatusSelectedPhotoNotification,
+            object: self,
+            userInfo: userInfo)
+        
+    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.thumbnailUrls?.count ?? 0
     }

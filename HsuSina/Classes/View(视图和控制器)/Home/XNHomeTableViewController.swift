@@ -29,7 +29,23 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         preferTableView()
         
         loadData()
+        
+        // 注册通知 
+        NSNotificationCenter.defaultCenter().addObserverForName(XNStatusSelectedPhotoNotification,
+            object: nil,
+            queue: nil) { [weak self](n) -> Void in
+                
+                print("接受通知 \(n)")
+                print(self?.view)
+        }
     }
+    
+    deinit {
+        // 注销通知
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    
+    }
+    
     ///  准备表格
     private func preferTableView() {
         
