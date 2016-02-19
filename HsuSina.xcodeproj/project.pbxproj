@@ -31,6 +31,8 @@
 		04D7DAEF1C56768500D74194 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D7DAEE1C56768500D74194 /* Common.swift */; };
 		04E123451C585F38006ABA9C /* XNWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */; };
 		04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */; };
+		04EEF8341C772A7800CBE8CF /* PicturePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8331C772A7800CBE8CF /* PicturePickerController.swift */; };
+		04EEF8361C772A9B00CBE8CF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8351C772A9B00CBE8CF /* UIImage+Extension.swift */; };
 		04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */; };
 		04F3DAA81C5A79160047FEC0 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */; };
 		04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA91C5A827F0047FEC0 /* XNUser.swift */; };
@@ -68,6 +70,8 @@
 		04D7DAEE1C56768500D74194 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		04E123441C585F38006ABA9C /* XNWelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XNWelcomeViewController.swift; path = ../XNWelcomeViewController.swift; sourceTree = "<group>"; };
 		04E123471C5885A5006ABA9C /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		04EEF8331C772A7800CBE8CF /* PicturePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturePickerController.swift; sourceTree = "<group>"; };
+		04EEF8351C772A9B00CBE8CF /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatus.swift; sourceTree = "<group>"; };
 		04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA91C5A827F0047FEC0 /* XNUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNUser.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 		04B5542C1C5521CA001C9D47 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04EEF8321C772A7800CBE8CF /* PicturePicker(照片查看) */,
 				04B554411C552E6E001C9D47 /* Extension */,
 				04D7DAEE1C56768500D74194 /* Common.swift */,
 				04957F061C572155002C6FCC /* NetworkTools.swift */,
@@ -249,6 +254,7 @@
 			children = (
 				04B554441C552EC8001C9D47 /* UIButton+Extension.swift */,
 				0498C3E91C561A3D0067798D /* UILable+Extension.swift */,
+				04EEF8351C772A9B00CBE8CF /* UIImage+Extension.swift */,
 				0498C3EB1C561EAB0067798D /* UIImageView+Extension.swift */,
 				0479B10D1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift */,
 			);
@@ -262,6 +268,15 @@
 				0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */,
 			);
 			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		04EEF8321C772A7800CBE8CF /* PicturePicker(照片查看) */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF8331C772A7800CBE8CF /* PicturePickerController.swift */,
+			);
+			name = "PicturePicker(照片查看)";
+			path = PicturePicker;
 			sourceTree = "<group>";
 		};
 		04F3DAAD1C5A8A2E0047FEC0 /* StatusCell */ = {
@@ -425,6 +440,7 @@
 				048D57D81C65F5E700AAAAEF /* XNStatusNormalCell.swift in Sources */,
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,
 				04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */,
+				04EEF8341C772A7800CBE8CF /* PicturePickerController.swift in Sources */,
 				0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */,
 				04D7DAEF1C56768500D74194 /* Common.swift in Sources */,
 				0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */,
@@ -441,6 +457,7 @@
 				04CC8D4A1C5CDAF000B26EFB /* XNStatusPictureView.swift in Sources */,
 				04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */,
 				04957F071C572155002C6FCC /* NetworkTools.swift in Sources */,
+				04EEF8361C772A9B00CBE8CF /* UIImage+Extension.swift in Sources */,
 				04B554451C552EC8001C9D47 /* UIButton+Extension.swift in Sources */,
 				04F3DAAF1C5A8A5B0047FEC0 /* XNStatusCell.swift in Sources */,
 				04F3DAB31C5A8A8D0047FEC0 /* XNStatusCellBottomView.swift in Sources */,

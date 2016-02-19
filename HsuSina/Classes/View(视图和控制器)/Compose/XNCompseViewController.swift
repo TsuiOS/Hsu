@@ -27,6 +27,43 @@ class XNCompseViewController: UIViewController {
     @objc private func selectEmoticon() {
         print("选择表情")
     }
+    // MARK : - 键盘处理
+    ///  键盘变化处理
+    @objc private func keyboardChange(n: NSNotification) {
+        print(n)
+        
+        // 1. 获取目标的 rect - 字典中的`结构体`是 NSValue
+        let rect = (n.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        // 获取目标的动画时长 - 字典中的数值是 NSNumber
+        let duration = (n.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        let offset = -UIScreen.mainScreen().bounds.height + rect.origin.y
+        
+        // 2. 更新约束
+        toolbar.snp_updateConstraints { (make) -> Void in
+            make.bottom.equalTo(view.snp_bottom).offset(offset)
+        }
+        
+        // 3. 动画
+        UIView.animateWithDuration(duration) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 添加键盘通知
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardChange:",
+            name: UIKeyboardWillChangeFrameNotification,
+            object: nil)
+    }
+    deinit {
+        // 注销通知
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    
+    }
     
     // MARK : - 视图声明周期
     override func loadView() {
