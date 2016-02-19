@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
+// MARK : - 撰写控制器
 class XNCompseViewController: UIViewController {
+    
     
     // MARK : - 监听方法
     ///  关闭
