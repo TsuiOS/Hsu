@@ -41,6 +41,7 @@
 		04EEF8471C772C6400CBE8CF /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF83E1C772C6400CBE8CF /* String+Emoji.swift */; };
 		04EEF8481C772C6400CBE8CF /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF83F1C772C6400CBE8CF /* UITextView+Emoticon.swift */; };
 		04EEF8491C772C6400CBE8CF /* EmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8411C772C6400CBE8CF /* EmoticonManager.swift */; };
+		04EEF84C1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF84B1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift */; };
 		04F3DAA41C5A70AC0047FEC0 /* XNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */; };
 		04F3DAA81C5A79160047FEC0 /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */; };
 		04F3DAAA1C5A827F0047FEC0 /* XNUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3DAA91C5A827F0047FEC0 /* XNUser.swift */; };
@@ -88,6 +89,7 @@
 		04EEF83E1C772C6400CBE8CF /* String+Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		04EEF83F1C772C6400CBE8CF /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
 		04EEF8411C772C6400CBE8CF /* EmoticonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonManager.swift; sourceTree = "<group>"; };
+		04EEF84B1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNPhotoBrowserViewController.swift; sourceTree = "<group>"; };
 		04F3DAA31C5A70AC0047FEC0 /* XNStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNStatus.swift; sourceTree = "<group>"; };
 		04F3DAA71C5A79160047FEC0 /* StatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		04F3DAA91C5A827F0047FEC0 /* XNUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNUser.swift; sourceTree = "<group>"; };
@@ -181,8 +183,9 @@
 		04B5542C1C5521CA001C9D47 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04EEF84A1C77416800CBE8CF /* PhotoBrowser(图片查看) */,
 				04EEF8371C772C6400CBE8CF /* Emoticon(表情键盘) */,
-				04EEF8321C772A7800CBE8CF /* PicturePicker(照片查看) */,
+				04EEF8321C772A7800CBE8CF /* PicturePicker(照片选择) */,
 				04B554411C552E6E001C9D47 /* Extension */,
 				04D7DAEE1C56768500D74194 /* Common.swift */,
 				04957F061C572155002C6FCC /* NetworkTools.swift */,
@@ -287,12 +290,12 @@
 			path = NewFeature;
 			sourceTree = "<group>";
 		};
-		04EEF8321C772A7800CBE8CF /* PicturePicker(照片查看) */ = {
+		04EEF8321C772A7800CBE8CF /* PicturePicker(照片选择) */ = {
 			isa = PBXGroup;
 			children = (
 				04EEF8331C772A7800CBE8CF /* PicturePickerController.swift */,
 			);
-			name = "PicturePicker(照片查看)";
+			name = "PicturePicker(照片选择)";
 			path = PicturePicker;
 			sourceTree = "<group>";
 		};
@@ -326,6 +329,15 @@
 				04EEF8411C772C6400CBE8CF /* EmoticonManager.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04EEF84A1C77416800CBE8CF /* PhotoBrowser(图片查看) */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF84B1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift */,
+			);
+			name = "PhotoBrowser(图片查看)";
+			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		04F3DAAD1C5A8A2E0047FEC0 /* StatusCell */ = {
@@ -496,6 +508,7 @@
 				0498C3EA1C561A3D0067798D /* UILable+Extension.swift in Sources */,
 				04E123481C5885A5006ABA9C /* UserAccountViewModel.swift in Sources */,
 				04EEF8341C772A7800CBE8CF /* PicturePickerController.swift in Sources */,
+				04EEF84C1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift in Sources */,
 				04EEF8471C772C6400CBE8CF /* String+Emoji.swift in Sources */,
 				0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */,
 				04D7DAEF1C56768500D74194 /* Common.swift in Sources */,

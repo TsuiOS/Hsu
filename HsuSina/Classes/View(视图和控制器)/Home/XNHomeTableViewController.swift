@@ -35,8 +35,18 @@ class XNHomeTableViewController: XNVisitorTableViewController {
             object: nil,
             queue: nil) { [weak self](n) -> Void in
                 
-                print("接受通知 \(n)")
-                print(self?.view)
+                guard let indexPath = n.userInfo?[XNStatusSelectedPhotoIndexPathKey] as? NSIndexPath else {
+                    return
+                }
+                
+                guard let urls = n.userInfo?[XNStatusSelectedPhotoURLsKey] as? [NSURL] else {
+                
+                    return
+                }
+                let vc = XNPhotoBrowserViewController(urls: urls, indexPath: indexPath)
+                
+                // modal
+                self?.presentViewController(vc, animated: true, completion: nil)
         }
     }
     
