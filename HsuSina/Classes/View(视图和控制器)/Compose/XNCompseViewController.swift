@@ -13,6 +13,9 @@ class XNCompseViewController: UIViewController {
     // MARK : - 监听方法
     ///  关闭
     @objc private func close() {
+        // 在退出控制器之前关闭键盘
+        textView.resignFirstResponder()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     ///发布微博
@@ -32,8 +35,14 @@ class XNCompseViewController: UIViewController {
         setupUI()
     }
     
-    // MARK: - 懒加载控件
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //激活键盘
+        textView.becomeFirstResponder()
+    }
     
+    // MARK: - 懒加载控件
     /// 工具条
     private lazy var toolbar = UIToolbar()
     
