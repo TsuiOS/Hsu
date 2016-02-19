@@ -36,6 +36,26 @@ class XNCompseViewController: UIViewController {
     
     /// 工具条
     private lazy var toolbar = UIToolbar()
+    
+    /// 文本视图
+    private lazy var textView: UITextView = {
+        let tv = UITextView()
+        
+        tv.font = UIFont.systemFontOfSize(18)
+        tv.textColor = UIColor.darkGrayColor()
+        
+        // 始终允许垂直滚动
+        tv.alwaysBounceVertical = true
+        // 拖拽关闭键盘
+        tv.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+        
+        return tv
+    }()
+    
+    /// 占位标签
+    private lazy var placeHolderLable: UILabel = UILabel(title: "分享新鲜事...",
+        color: UIColor.lightGrayColor(),
+        fontSize: 18)
 }
 
 // MARK: - 设置界面
@@ -48,6 +68,31 @@ private extension XNCompseViewController {
         // 设置控件
         prepareNavigationBar()
         prepareToolbar()
+        prepareTextView()
+        
+    }
+    
+    ///  准备文本视图
+    private func prepareTextView() {
+         view.addSubview(textView)
+        
+        textView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp_topLayoutGuideBottom)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.bottom.equalTo(toolbar.snp_top)
+        }
+        
+//        textView.text = "分享新鲜事..."
+        
+        // 添加占位标签
+        textView.addSubview(placeHolderLable)
+        
+        placeHolderLable.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(textView.snp_top).offset(8)
+            make.left.equalTo(textView.snp_left).offset(5)
+        }
+    
     }
     
     ///  准备工具条
