@@ -56,12 +56,18 @@ extension UIButton {
     /// - parameter imageName: 图像名称
     ///
     /// - returns: UIButton
-    convenience init(title: String, fontSize: CGFloat, color: UIColor, imageName: String) {
+    convenience init(title: String, fontSize: CGFloat, color: UIColor, imageName: String?,backColor: UIColor? = nil) {
         self.init()
         
         setTitle(title, forState: .Normal)
         setTitleColor(color, forState: .Normal)
-        setImage(UIImage(named: imageName), forState: .Normal)
+        
+        if let imageName = imageName {
+            setImage(UIImage(named: imageName), forState: .Normal)
+        }
+        
+        //设置背景颜色
+        backgroundColor = backColor
         
         titleLabel?.font = UIFont.systemFontOfSize(fontSize)
         
