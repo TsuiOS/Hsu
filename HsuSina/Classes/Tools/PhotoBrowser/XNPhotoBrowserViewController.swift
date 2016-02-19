@@ -139,6 +139,8 @@ extension XNPhotoBrowserViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = UIColor.randomColor()
         
+        cell.imageURL = urls[indexPath.item]
+        
         return cell
     }
 
