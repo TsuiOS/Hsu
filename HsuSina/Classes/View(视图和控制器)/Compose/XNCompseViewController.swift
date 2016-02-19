@@ -10,6 +10,9 @@ import UIKit
 // MARK : - 撰写控制器
 class XNCompseViewController: UIViewController {
     
+    ///  照片选择控制器
+    private lazy var picturePickerController = PicturePickerController()
+    
     
     // MARK : - 监听方法
     ///  关闭
@@ -116,7 +119,26 @@ private extension XNCompseViewController {
         prepareNavigationBar()
         prepareToolbar()
         prepareTextView()
+        preparePicturePicker()
+    }
+    
+    ///  准备照片选择控制器
+    private func preparePicturePicker() {
         
+        // 添加子控制器
+        addChildViewController(picturePickerController)
+        
+        // 添加视图
+        view.addSubview(picturePickerController.view)
+        
+        // 自动布局
+        picturePickerController.view.snp_makeConstraints { (make) -> Void in
+            make.bottom.equalTo(view)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.height.equalTo(view.snp_height).multipliedBy(0.6)
+        }
+    
     }
     
     ///  准备文本视图
