@@ -12,6 +12,11 @@ class XNCompseViewController: UIViewController {
     
     ///  照片选择控制器
     private lazy var picturePickerController = PicturePickerController()
+    ///  表情键盘
+    private lazy var emoticonView: EmoticonView = EmoticonView { [weak self](emoticon) -> () in
+        self?.textView.insertEmoticon(emoticon)
+
+    }
     
     
     // MARK : - 监听方法
@@ -30,6 +35,13 @@ class XNCompseViewController: UIViewController {
     ///  选择表情
     @objc private func selectEmoticon() {
         print("选择表情")
+        // 1. 退掉系统键盘
+        textView.resignFirstResponder()
+        //2. 设置自定义键盘
+        textView.inputView = textView.inputView == nil ? emoticonView : nil
+        
+        // 3. 重新激活键盘
+        textView.becomeFirstResponder()
     }
     // MARK : - 键盘处理
     ///  键盘变化处理
@@ -40,6 +52,8 @@ class XNCompseViewController: UIViewController {
         let rect = (n.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         // 获取目标的动画时长 - 字典中的数值是 NSNumber
         let duration = (n.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        // 动画曲线数值
+        let curve = (n.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).integerValue
         
         let offset = -UIScreen.mainScreen().bounds.height + rect.origin.y
         
@@ -48,10 +62,22 @@ class XNCompseViewController: UIViewController {
             make.bottom.equalTo(view.snp_bottom).offset(offset)
         }
         
-        // 3. 动画
+        // 3. 动画 － UIView 块动画 本质上是对 CAAnimation 的包装
         UIView.animateWithDuration(duration) { () -> Void in
+            // 设置动画曲线
+            /**
+            曲线值 = 7
+            － 如果之前的动画没有完成，有启动了其他的动画，让动画的图层直接运动到后续动画的目标位置
+            － 一旦设置了 `7`，动画时长无效，动画时长统一变成 0.5s
+            */
+            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: curve)!)
+
             self.view.layoutIfNeeded()
         }
+        
+        // 调试动画时长 － keyPath 将动画添加到图层
+        let anim = toolbar.layer.animationForKey("position")
+        print("动画时长 \(anim?.duration)")
     
     }
     override func viewDidLoad() {
@@ -119,7 +145,7 @@ private extension XNCompseViewController {
         prepareNavigationBar()
         prepareToolbar()
         prepareTextView()
-        preparePicturePicker()
+//        preparePicturePicker()
     }
     
     ///  准备照片选择控制器
