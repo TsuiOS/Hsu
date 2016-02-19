@@ -47,6 +47,35 @@ class NetworkTools: AFHTTPSessionManager {
     }
 }
 
+// MARK: - 发布微博
+extension NetworkTools {
+    
+    /// 发布微博
+    ///
+    /// - parameter status:   微博文本
+    /// - parameter finished: 完成回调
+    /// - see: [http://open.weibo.com/wiki/2/statuses/update](http://open.weibo.com/wiki/2/statuses/update)
+    func sendStatus(status: String, finished: XNRequesCallBack) {
+        
+        // 1. 获取 token 字典
+        guard var params = tokenDict else {
+            
+            // 如果字典为 nil，通知调用方，token 无效
+            finished(result: nil, error: NSError(domain: "cn.itcast.error", code: -1001, userInfo: ["message": "token 为空"]))
+            
+            return
+        }
+        
+        // 2. 设置参数
+        params["status"] = status
+        
+        let urlString = "https://api.weibo.com/2/statuses/update.json"
+        
+        // 3. 发起网络请求
+        request(.POST, URLString: urlString, parameters: params, finished: finished)
+    }
+}
+
 // MARK: - 微博数据相关的方法
 extension NetworkTools {
     

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 // MARK : - 撰写控制器
 class XNCompseViewController: UIViewController {
     
@@ -29,8 +31,23 @@ class XNCompseViewController: UIViewController {
     }
     ///发布微博
     @objc private func sendStatus() {
-    
-        print("发布微博")
+        
+        // 1. 获取文本内容
+        let text = textView.emoticonText
+        
+        // 2. 发布微博
+        NetworkTools.sharedTools.sendStatus(text) { (result, error) -> () in
+            
+            if error != nil {
+                print("出错了")
+                SVProgressHUD.showInfoWithStatus("您的网络不给力")
+                return
+            }
+            
+            print(result)
+            // 关闭控制器
+            self.close()
+        }
     }
     ///  选择表情
     @objc private func selectEmoticon() {
@@ -125,6 +142,9 @@ class XNCompseViewController: UIViewController {
         // 拖拽关闭键盘
         tv.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
         
+        // 设置文本视图的代理
+        tv.delegate = self
+        
         return tv
     }()
     
@@ -132,6 +152,16 @@ class XNCompseViewController: UIViewController {
     private lazy var placeHolderLable: UILabel = UILabel(title: "分享新鲜事...",
         color: UIColor.lightGrayColor(),
         fontSize: 18)
+}
+
+// MARK: - UITextViewDelegate
+extension XNCompseViewController: UITextViewDelegate {
+    
+    func textViewDidChange(textView: UITextView) {
+        navigationItem.rightBarButtonItem?.enabled = textView.hasText()
+        placeHolderLable.hidden = textView.hasText()
+    }
+
 }
 
 // MARK: - 设置界面
@@ -237,7 +267,9 @@ private extension XNCompseViewController {
         // 1. 左右边按钮
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .Plain, target: self, action: "close")
         
-         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Plain, target: self, action: "sendStatus")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Plain, target: self, action: "sendStatus")
+        // 禁用发布微博按钮
+        navigationItem.rightBarButtonItem?.enabled = false
         
         //2. 设置标题 方式一
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 36))
