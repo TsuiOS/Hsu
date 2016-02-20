@@ -98,10 +98,44 @@ class XNPhotoBrowserCell: UICollectionViewCell {
         
         // 2. 设置位置
         scrollView.frame = bounds
+        
+        // 3. 设置 scrollview 缩放
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 0.5
+        scrollView.maximumZoomScale = 2
+    
     }
 
     
     // MARK : - 懒加载控件
     private lazy var scrollView: UIScrollView = UIScrollView()
     private lazy var imageView: UIImageView = UIImageView()
+}
+
+// MARK: - UIScrollViewDelegate
+extension XNPhotoBrowserCell: UIScrollViewDelegate {
+
+    ///  返回被缩放的视图
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    ///  缩放完成之后执行一次
+    ///
+    ///  - parameter scrollView: scrollView
+    ///  - parameter view:       view 被缩放的视图
+    ///  - parameter scale:      被缩放的比例
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        print("缩放完成 \(view) \(view?.bounds)")
+    }
+    ///  只要缩放就会调用
+    /**
+    a d => 缩放比例
+    a b c d => 共同决定旋转
+    tx ty => 设置位移
+    
+    定义控件位置 frame = center + bounds * transform
+    */
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        print(imageView.transform)
+    }
 }
