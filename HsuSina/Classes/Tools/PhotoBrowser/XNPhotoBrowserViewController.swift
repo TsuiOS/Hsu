@@ -42,7 +42,8 @@ class XNPhotoBrowserViewController: UIViewController {
     }
     
     override func loadView() {
-        let rect = UIScreen.mainScreen().bounds
+        var rect = UIScreen.mainScreen().bounds
+        rect.size.width += 20
         //1. 设置根视图
         view = UIView(frame: rect)
         
@@ -137,7 +138,7 @@ extension XNPhotoBrowserViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserViewCellId, forIndexPath: indexPath) as! XNPhotoBrowserCell
         
-        cell.backgroundColor = UIColor.randomColor()
+        cell.backgroundColor = UIColor.grayColor()
         
         cell.imageURL = urls[indexPath.item]
         

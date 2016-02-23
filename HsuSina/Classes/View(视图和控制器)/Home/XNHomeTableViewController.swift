@@ -43,6 +43,7 @@ class XNHomeTableViewController: XNVisitorTableViewController {
                 
                     return
                 }
+                
                 let vc = XNPhotoBrowserViewController(urls: urls, indexPath: indexPath)
                 
                 // modal

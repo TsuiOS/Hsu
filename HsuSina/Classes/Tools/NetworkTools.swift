@@ -177,7 +177,6 @@ extension NetworkTools {
         let success = { (task: NSURLSessionDataTask?, result: AnyObject?) -> Void in
             finished(result: result, error: nil)
         }
-        
         // 定义失败回调
         let failure = { (task: NSURLSessionDataTask?, error: NSError?) -> Void in
             // 在开发网络应用的时候，错误不要提示给用户，但是错误一定要输出！
@@ -186,9 +185,10 @@ extension NetworkTools {
         }
         
         if method == XNRequestMethod.GET {
-            GET(URLString, parameters: parameters, success: success, failure: failure)
+            GET(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
         } else {
-            POST(URLString, parameters: parameters, success: success, failure: failure)
+            POST(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
+
         }
         
     }

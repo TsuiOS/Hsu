@@ -18,6 +18,9 @@ class XNPhotoBrowserCell: UICollectionViewCell {
             guard let url = imageURL else {
                 return
             }
+            // 恢复 scrollView
+            resetScrollView()
+            
             // 从磁盘中加载缩略图的图像
             imageView.image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(url.absoluteString)
             // 设置大小
@@ -33,6 +36,13 @@ class XNPhotoBrowserCell: UICollectionViewCell {
             
         }
     }
+    ///  重设 scrollView 的内容属性
+    private func resetScrollView() {
+        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.contentOffset = CGPointZero
+        scrollView.contentSize = CGSizeZero
+    
+    }
     ///  设置 imageView 的位置
     ///
     ///  - parameter image: image
@@ -45,7 +55,8 @@ class XNPhotoBrowserCell: UICollectionViewCell {
         if size.height < scrollView.bounds.height {
             // 上下局中显示
             let y = (scrollView.bounds.height - size.height) * 0.5
-            imageView.frame = CGRect(x: 0, y: y, width: size.width, height: size.height)
+            imageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+            scrollView.contentInset = UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0)
         } else {
             imageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             scrollView.contentSize = size
@@ -97,7 +108,9 @@ class XNPhotoBrowserCell: UICollectionViewCell {
         scrollView.addSubview(imageView)
         
         // 2. 设置位置
-        scrollView.frame = bounds
+        var rect = bounds
+        rect.size.width -= 20
+        scrollView.frame = rect
         
         // 3. 设置 scrollview 缩放
         scrollView.delegate = self
@@ -126,6 +139,16 @@ extension XNPhotoBrowserCell: UIScrollViewDelegate {
     ///  - parameter scale:      被缩放的比例
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         print("缩放完成 \(view) \(view?.bounds)")
+        
+        var offsetY = (scrollView.bounds.height - view!.frame.height) * 0.5
+        offsetY = offsetY < 0 ? 0 : offsetY
+        
+        var offsetX = (scrollView.bounds.width - view!.frame.width) * 0.5
+        offsetX = offsetX < 0 ? 0 : offsetX
+        
+        // 设置间距
+        scrollView.contentInset = UIEdgeInsets(top: offsetY, left: offsetX, bottom: 0, right: 0)
+
     }
     ///  只要缩放就会调用
     /**
