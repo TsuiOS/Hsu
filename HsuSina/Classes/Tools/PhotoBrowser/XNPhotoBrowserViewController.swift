@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 /// 可重用 Cell 标示符号
 private let PhotoBrowserViewCellId = "PhotoBrowserViewCellId"
 
@@ -25,7 +25,23 @@ class XNPhotoBrowserViewController: UIViewController {
     
     /// 保存照片
     @objc private func save() {
-        print("保存照片")
+        //1 拿到图片
+        let cell = collectionView.visibleCells()[0] as! XNPhotoBrowserCell
+        // imageView 中很可能会因为网络问题没有图片
+        guard let image = cell.imageView.image else {
+            return
+        }
+        //保存图像
+        UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        
+       
+    }
+     //  - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject?) {
+        
+        let message = (error == nil) ? "保存成功" : "保存失败"
+        SVProgressHUD.showInfoWithStatus(message)
+        
     }
 
     // MARK : - 构造函数

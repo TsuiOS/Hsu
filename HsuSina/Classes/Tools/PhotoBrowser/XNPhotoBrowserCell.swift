@@ -150,8 +150,8 @@ class XNPhotoBrowserCell: UICollectionViewCell {
     }
     
     // MARK : - 懒加载控件
-    private lazy var scrollView: UIScrollView = UIScrollView()
-    private lazy var imageView: UIImageView = UIImageView()
+    lazy var scrollView: UIScrollView = UIScrollView()
+    lazy var imageView: UIImageView = UIImageView()
     private lazy var placeHolder: XNProgressImageView = XNProgressImageView()
 }
 
