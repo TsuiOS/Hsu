@@ -29,7 +29,7 @@ class XNCompseViewController: UIViewController {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-    ///发布微博
+    /// 发布微博
     @objc private func sendStatus() {
         
         // 1. 获取文本内容
@@ -43,10 +43,20 @@ class XNCompseViewController: UIViewController {
                 SVProgressHUD.showInfoWithStatus("您的网络不给力")
                 return
             }
-            
-            print(result)
+            SVProgressHUD.showSuccessWithStatus("已发送")
+            /**
+            SVProgressHUDMaskType
+            None
+            Clear
+            Black
+            Gradient
+            */
+            //SVProgressHUD.showSuccessWithStatus("已发送", maskType: .None)
             // 关闭控制器
-            self.close()
+            delay(0.5, callFunc: { () -> () in
+                self.close()
+            })
+            
         }
     }
     ///  选择表情
@@ -133,7 +143,7 @@ class XNCompseViewController: UIViewController {
     /// 文本视图
     private lazy var textView: UITextView = {
         let tv = UITextView()
-        
+        tv.backgroundColor = UIColor.orangeColor()
         tv.font = UIFont.systemFontOfSize(18)
         tv.textColor = UIColor.darkGrayColor()
         

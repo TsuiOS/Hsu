@@ -168,7 +168,7 @@ private class StatusPictureViewCell: UICollectionViewCell {
         didSet {
             iconView.sd_setImageWithURL(imageURL,
                 placeholderImage: nil,
-                options: [SDWebImageOptions.RetryFailed,SDWebImageOptions.RefreshCached])
+                options: [])
             //SDWebImageOptions.RetryFailed,SDWebImageOptions.RefreshCached
         }
     }

@@ -72,7 +72,7 @@ class StatusListViewModel {
             dispatch_group_enter(group)
             
             SDWebImageManager.sharedManager().downloadImageWithURL(url,
-                options: [SDWebImageOptions.RefreshCached, SDWebImageOptions.RetryFailed],
+                options: [],
                 progress: nil,
                 completed: { (image, _, _, _, _) -> Void in
                     

@@ -37,14 +37,14 @@ class NetworkTools: AFHTTPSessionManager {
     }()
     
     /// 返回 token 字典
-    private var tokenDict: [String: AnyObject]? {
-        //判断 token 是否有效
-        if let token = UserAccountViewModel.sharedUserAccount.accessToken {
-        
-            return ["access_token": token]
-        }
-        return nil
-    }
+//    private var tokenDict: [String: AnyObject]? {
+//        //判断 token 是否有效
+//        if let token = UserAccountViewModel.sharedUserAccount.accessToken {
+//        
+//            return ["access_token": token]
+//        }
+//        return nil
+//    }
 }
 
 // MARK: - 发布微博
@@ -57,22 +57,16 @@ extension NetworkTools {
     /// - see: [http://open.weibo.com/wiki/2/statuses/update](http://open.weibo.com/wiki/2/statuses/update)
     func sendStatus(status: String, finished: XNRequesCallBack) {
         
-        // 1. 获取 token 字典
-        guard var params = tokenDict else {
-            
-            // 如果字典为 nil，通知调用方，token 无效
-            finished(result: nil, error: NSError(domain: "cn.itcast.error", code: -1001, userInfo: ["message": "token 为空"]))
-            
-            return
-        }
-        
+        // 1. 创建参数字典
+        var params = [String: AnyObject]()
+
         // 2. 设置参数
         params["status"] = status
         
         let urlString = "https://api.weibo.com/2/statuses/update.json"
         
         // 3. 发起网络请求
-        request(.POST, URLString: urlString, parameters: params, finished: finished)
+        tokenRequest(.POST, URLString: urlString, parameters: params, finished: finished)
     }
 }
 
@@ -85,18 +79,14 @@ extension NetworkTools {
     /// - see [https://api.weibo.com/2/statuses/home_timeline.json](https://api.weibo.com/2/statuses/home_timeline.json)
     func loadStatus(finished: XNRequesCallBack) {
         
-        //1. 获取 token 字典
-        guard let params = tokenDict else {
+        // 1. 创建参数字典
+        let params = [String: AnyObject]()
         
-            // 如果字典为 nil,通知调用方, token 无效
-            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]))
-            return
-        }
         //2. 准备网络参数
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         
         //3. 发起网络请求
-        request(.GET, URLString: urlString, parameters: params, finished: finished)
+        tokenRequest(.GET, URLString: urlString, parameters: params, finished: finished)
         
     }
 
@@ -114,18 +104,13 @@ extension NetworkTools {
     /// 参数uid与screen_name二者必选其一，且只能选其一
     func loadUserInfo(uid: String, finished: XNRequesCallBack) {
         
-        guard var params = tokenDict else {
-        
-            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为kong"]) )
-            return
-        }
-        
-        
+        // 1. 创建参数字典
+        var params = [String: AnyObject]()
         let urlString = "https://api.weibo.com/2/users/show.json"
         
         params["uid"] = uid
         
-        request(.GET, URLString: urlString, parameters: params, finished: finished)
+        tokenRequest(.GET, URLString: urlString, parameters: params, finished: finished)
     
     }
 
@@ -165,6 +150,32 @@ extension NetworkTools {
 // MARK: - 封装 AFN 网络方法
 extension NetworkTools {
     
+    /// 使用 token 进行网络请求
+    ///
+    /// - parameter method:     GET / POST
+    /// - parameter URLString:  URLString
+    /// - parameter parameters: 参数字典
+    /// - parameter finished:   完成回调
+    private func tokenRequest(method: XNRequestMethod, URLString: String, var parameters: [String: AnyObject]?, finished: XNRequesCallBack) {
+        
+        //1. 设置 token 参数
+        //判断 token 是否有效
+        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+            
+            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]) )
+            return
+        }
+        //设置parameters字典
+        // 判断参数字典是否有值
+        if parameters == nil {
+            parameters = [String: AnyObject]()
+        }
+        parameters!["access_token"] = token
+        //2. 发起网络请求
+        request(method, URLString: URLString, parameters: parameters, finished: finished)
+    
+    }
+    
     /// 网络请求
     ///
     /// - parameter method:     GET / POST
@@ -190,6 +201,13 @@ extension NetworkTools {
             POST(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
 
         }
-        
+    }
+    ///  上传图片
+    ///
+    ///  - parameter URLString:  <#URLString description#>
+    ///  - parameter parameters: <#parameters description#>
+    ///  - parameter finished:   <#finished description#>
+    private func upload(URLString: String, parameters: [String: AnyObject]?, finished: XNRequesCallBack) {
+        POST(<#T##URLString: String##String#>, parameters: <#T##AnyObject?#>, constructingBodyWithBlock: <#T##((AFMultipartFormData) -> Void)?##((AFMultipartFormData) -> Void)?##(AFMultipartFormData) -> Void#>, progress: <#T##((NSProgress) -> Void)?##((NSProgress) -> Void)?##(NSProgress) -> Void#>, success: <#T##((NSURLSessionDataTask, AnyObject?) -> Void)?##((NSURLSessionDataTask, AnyObject?) -> Void)?##(NSURLSessionDataTask, AnyObject?) -> Void#>, failure: <#T##((NSURLSessionDataTask?, NSError) -> Void)?##((NSURLSessionDataTask?, NSError) -> Void)?##(NSURLSessionDataTask?, NSError) -> Void#>)
     }
 }
