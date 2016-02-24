@@ -21,7 +21,7 @@ class XNCompseViewController: UIViewController {
     }
     
     
-    // MARK : - 监听方法
+    // MARK: - 监听方法
     ///  关闭
     @objc private func close() {
         // 在退出控制器之前关闭键盘
@@ -34,7 +34,7 @@ class XNCompseViewController: UIViewController {
         
         // 1. 获取文本内容
         let text = textView.emoticonText
-        let image = UIImage(named: "avatar_default_big")
+        let image = picturePickerController.pictures.last
         // 2. 发布微博
         NetworkTools.sharedTools.sendStatus(text, image: image) { (result, error) -> () in
             
@@ -44,14 +44,6 @@ class XNCompseViewController: UIViewController {
                 return
             }
             SVProgressHUD.showSuccessWithStatus("已发送")
-            /**
-            SVProgressHUDMaskType
-            None
-            Clear
-            Black
-            Gradient
-            */
-            //SVProgressHUD.showSuccessWithStatus("已发送", maskType: .None)
             // 关闭控制器
             delay(0.5, callFunc: { () -> () in
                 self.close()
@@ -59,6 +51,37 @@ class XNCompseViewController: UIViewController {
             
         }
     }
+    
+    /// 选择照片
+    @objc private func selectPicture() {
+        print("选择照片 \(picturePickerController.view.frame)")
+        
+        // 退掉键盘
+        textView.resignFirstResponder()
+        
+        // 0. 判断如果已经更新了约束，不再执行后续代码
+        if picturePickerController.view.frame.height > 0 {
+            return
+        }
+        
+        // 1. 修改照片选择控制器视图的约束
+        picturePickerController.view.snp_updateConstraints { (make) -> Void in
+            make.height.equalTo(view.bounds.height * 0.6)
+        }
+        // 2. 修改文本视图的约束 - 重建约束 - 会将之前`textView`的所有的约束删除
+        textView.snp_remakeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp_topLayoutGuideBottom)
+            make.left.equalTo(view.snp_left)
+            make.right.equalTo(view.snp_right)
+            make.bottom.equalTo(picturePickerController.view.snp_top)
+        }
+        
+        // 3. 动画更新约束
+        UIView.animateWithDuration(0.5) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     ///  选择表情
     @objc private func selectEmoticon() {
         print("选择表情")
@@ -70,7 +93,8 @@ class XNCompseViewController: UIViewController {
         // 3. 重新激活键盘
         textView.becomeFirstResponder()
     }
-    // MARK : - 键盘处理
+    
+    // MARK: - 键盘处理
     ///  键盘变化处理
     @objc private func keyboardChange(n: NSNotification) {
         print(n)
@@ -131,9 +155,11 @@ class XNCompseViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //激活键盘
-        textView.becomeFirstResponder()
+        // 激活键盘 - 如果已经存在照片控制器视图，不再激活键盘
+        if picturePickerController.view.frame.height == 0 {
+            //激活键盘
+            textView.becomeFirstResponder()
+        }
     }
     
     // MARK: - 懒加载控件
@@ -178,6 +204,8 @@ extension XNCompseViewController: UITextViewDelegate {
 private extension XNCompseViewController {
 
     func setupUI() {
+        // 0. 取消自动调整滚动视图间距
+        automaticallyAdjustsScrollViewInsets = false
         // 设置背景颜色
         view.backgroundColor = UIColor.grayColor()
         
@@ -185,7 +213,7 @@ private extension XNCompseViewController {
         prepareNavigationBar()
         prepareToolbar()
         prepareTextView()
-//        preparePicturePicker()
+        preparePicturePicker()
     }
     
     ///  准备照片选择控制器
@@ -195,14 +223,14 @@ private extension XNCompseViewController {
         addChildViewController(picturePickerController)
         
         // 添加视图
-        view.addSubview(picturePickerController.view)
+        view.insertSubview(picturePickerController.view, belowSubview: toolbar)
         
         // 自动布局
         picturePickerController.view.snp_makeConstraints { (make) -> Void in
             make.bottom.equalTo(view)
             make.left.equalTo(view)
             make.right.equalTo(view)
-            make.height.equalTo(view.snp_height).multipliedBy(0.6)
+            make.height.equalTo(0)
         }
     
     }
@@ -217,9 +245,6 @@ private extension XNCompseViewController {
             make.right.equalTo(view)
             make.bottom.equalTo(toolbar.snp_top)
         }
-        
-//        textView.text = "分享新鲜事..."
-        
         // 添加占位标签
         textView.addSubview(placeHolderLable)
         
@@ -246,7 +271,7 @@ private extension XNCompseViewController {
             make.height.equalTo(44)
         }
         //3. 添加按钮
-        let itemSettings = [["imageName": "compose_toolbar_picture"],
+        let itemSettings = [["imageName": "compose_toolbar_picture", "actionName": "selectPicture"],
             ["imageName": "compose_mentionbutton_background"],
             ["imageName": "compose_trendbutton_background"],
             ["imageName": "compose_emoticonbutton_background", "actionName": "selectEmoticon"],
