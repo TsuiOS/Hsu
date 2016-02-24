@@ -34,12 +34,12 @@ class XNCompseViewController: UIViewController {
         
         // 1. 获取文本内容
         let text = textView.emoticonText
-        
+        let image = UIImage(named: "avatar_default_big")
         // 2. 发布微博
-        NetworkTools.sharedTools.sendStatus(text) { (result, error) -> () in
+        NetworkTools.sharedTools.sendStatus(text, image: image) { (result, error) -> () in
             
             if error != nil {
-                print("出错了")
+                print("出错了 \(error?.localizedDescription)")
                 SVProgressHUD.showInfoWithStatus("您的网络不给力")
                 return
             }

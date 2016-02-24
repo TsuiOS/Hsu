@@ -53,9 +53,10 @@ extension NetworkTools {
     /// 发布微博
     ///
     /// - parameter status:   微博文本
+    /// - parameter image:    微博配图
     /// - parameter finished: 完成回调
     /// - see: [http://open.weibo.com/wiki/2/statuses/update](http://open.weibo.com/wiki/2/statuses/update)
-    func sendStatus(status: String, finished: XNRequesCallBack) {
+    func sendStatus(status: String, image: UIImage?, finished: XNRequesCallBack) {
         
         // 1. 创建参数字典
         var params = [String: AnyObject]()
@@ -63,10 +64,19 @@ extension NetworkTools {
         // 2. 设置参数
         params["status"] = status
         
-        let urlString = "https://api.weibo.com/2/statuses/update.json"
-        
-        // 3. 发起网络请求
-        tokenRequest(.POST, URLString: urlString, parameters: params, finished: finished)
+        // 3.判断是否上传图片
+        if image == nil {
+            let urlString = "https://api.weibo.com/2/statuses/update.json"
+            
+            //发起网络请求
+            tokenRequest(.POST, URLString: urlString, parameters: params, finished: finished)
+        } else {
+            let urlString = "https://upload.api.weibo.com/2/statuses/upload.json"
+            
+            let data = UIImagePNGRepresentation(image!)
+            
+            upload(urlString, data: data!, name: "pic", parameters: params, finished: finished)
+        }
     }
 }
 
@@ -203,11 +213,34 @@ extension NetworkTools {
         }
     }
     ///  上传图片
-    ///
-    ///  - parameter URLString:  <#URLString description#>
-    ///  - parameter parameters: <#parameters description#>
-    ///  - parameter finished:   <#finished description#>
-    private func upload(URLString: String, parameters: [String: AnyObject]?, finished: XNRequesCallBack) {
-        POST(<#T##URLString: String##String#>, parameters: <#T##AnyObject?#>, constructingBodyWithBlock: <#T##((AFMultipartFormData) -> Void)?##((AFMultipartFormData) -> Void)?##(AFMultipartFormData) -> Void#>, progress: <#T##((NSProgress) -> Void)?##((NSProgress) -> Void)?##(NSProgress) -> Void#>, success: <#T##((NSURLSessionDataTask, AnyObject?) -> Void)?##((NSURLSessionDataTask, AnyObject?) -> Void)?##(NSURLSessionDataTask, AnyObject?) -> Void#>, failure: <#T##((NSURLSessionDataTask?, NSError) -> Void)?##((NSURLSessionDataTask?, NSError) -> Void)?##(NSURLSessionDataTask?, NSError) -> Void#>)
+    private func upload(URLString: String, data: NSData, name: String, var parameters: [String: AnyObject]?, finished: XNRequesCallBack) {
+        
+        
+        //1. 设置 token 参数
+        //判断 token 是否有效
+        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+            
+            finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]) )
+            return
+        }
+        //设置parameters字典
+        // 判断参数字典是否有值
+        if parameters == nil {
+            parameters = [String: AnyObject]()
+        }
+        parameters!["access_token"] = token
+
+        POST(URLString, parameters: parameters, constructingBodyWithBlock: { (formData) -> Void in
+            
+            ///  @param data        要上传文件的二进制数据
+            ///  @param name        是服务器定义的字段名称
+            ///  @param fileName    保存在服务器的文件名 后台会处理,名字随便写
+            ///  @param mimeType /contentType 二进制数据的准确类型
+             formData.appendPartWithFileData(data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+            }, progress: nil, success: { (_, result) -> Void in
+                finished(result: result, error: nil)
+            }) { (_, error) -> Void in
+                finished(result: nil, error: error)
+        }
     }
 }
