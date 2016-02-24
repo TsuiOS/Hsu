@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0403C1351C59E99600E00B97 /* XNNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */; };
+		0415F72B1C7D4376006C9CBC /* XNProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415F72A1C7D4376006C9CBC /* XNProgressImageView.swift */; };
 		0417A1631C77610F0043EF40 /* XNPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */; };
 		0439C6001C55B58300297C41 /* XNVisitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */; };
 		0439C6021C55C42200297C41 /* XNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439C6011C55C42200297C41 /* XNVisitorView.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		0403C1341C59E99600E00B97 /* XNNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNNewFeatureViewController.swift; sourceTree = "<group>"; };
+		0415F72A1C7D4376006C9CBC /* XNProgressImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNProgressImageView.swift; sourceTree = "<group>"; };
 		0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNPhotoBrowserCell.swift; sourceTree = "<group>"; };
 		0439C5FF1C55B58300297C41 /* XNVisitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorTableViewController.swift; sourceTree = "<group>"; };
 		0439C6011C55C42200297C41 /* XNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XNVisitorView.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			children = (
 				04EEF84B1C7741A500CBE8CF /* XNPhotoBrowserViewController.swift */,
 				0417A1621C77610F0043EF40 /* XNPhotoBrowserCell.swift */,
+				0415F72A1C7D4376006C9CBC /* XNProgressImageView.swift */,
 			);
 			name = "PhotoBrowser(图片查看)";
 			path = PhotoBrowser;
@@ -530,6 +533,7 @@
 				04B554361C55229A001C9D47 /* XNDiscoverTableViewController.swift in Sources */,
 				04957F0C1C572D0F002C6FCC /* XNOAuthViewController.swift in Sources */,
 				04B5543C1C5522DC001C9D47 /* XNProfileTableViewController.swift in Sources */,
+				0415F72B1C7D4376006C9CBC /* XNProgressImageView.swift in Sources */,
 				0479B10E1C7611D2007D7ED9 /* UIBarButtonItem+Extension.swift in Sources */,
 				04CC8D4A1C5CDAF000B26EFB /* XNStatusPictureView.swift in Sources */,
 				04F3DAAC1C5A86F10047FEC0 /* StatusViewModel.swift in Sources */,
