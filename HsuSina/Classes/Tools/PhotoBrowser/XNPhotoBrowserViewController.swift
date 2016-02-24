@@ -41,6 +41,7 @@ class XNPhotoBrowserViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // loadView 函数执行完毕, view 上的元素要全部加载完成
     override func loadView() {
         var rect = UIScreen.mainScreen().bounds
         rect.size.width += 20
@@ -50,11 +51,14 @@ class XNPhotoBrowserViewController: UIViewController {
         //2. 设置界面
         setupUI()
     }
+    
+    // 是视图加载完成后被调用, loadView 执行完毕被执行
+    // 主要做数据加载或者其他处理
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(urls)
-        print(currentIndexPath)
+        
+        //让 collection 滚动到指定的位置
+        collectionView.scrollToItemAtIndexPath(currentIndexPath, atScrollPosition: .CenteredHorizontally, animated: false)
     }
 
     // MARK : - 懒加载控件

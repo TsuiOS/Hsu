@@ -8,7 +8,7 @@
 
 import UIKit
 import SDWebImage
-
+import SVProgressHUD
 /// 照片查看 cell
 class XNPhotoBrowserCell: UICollectionViewCell {
     
@@ -32,8 +32,18 @@ class XNPhotoBrowserCell: UICollectionViewCell {
                 placeholderImage: nil,
                 options: [SDWebImageOptions.RefreshCached,SDWebImageOptions.RetryFailed],
                 progress: { (current, total) -> Void in
-                    
+                    // 回到主线程更新 UI
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.placeHolder.progress = CGFloat(current) / CGFloat(total)
+                        print("----- \(self.placeHolder.progress)")
+                    })
+                   
                 }) { (image, _, _, _) -> Void in
+                    
+                    // 判断图像下载时候成功
+                    if image == nil {
+                        SVProgressHUD.showInfoWithStatus("您的网络不给力")
+                    }
                     self.placeHolder.hidden = true
                     // 设置图像视图的位置
                     self.setPositon(image)
@@ -138,7 +148,6 @@ class XNPhotoBrowserCell: UICollectionViewCell {
         scrollView.maximumZoomScale = 2
     
     }
-
     
     // MARK : - 懒加载控件
     private lazy var scrollView: UIScrollView = UIScrollView()
