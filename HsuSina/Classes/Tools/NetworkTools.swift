@@ -160,6 +160,31 @@ extension NetworkTools {
 // MARK: - 封装 AFN 网络方法
 extension NetworkTools {
     
+    /// 向 parameters 字典中追加 token 参数
+    ///
+    /// - parameter parameters: 参数字典
+    ///
+    /// - returns: 是否追加成功
+    /// - 默认情况下，关于函数参数，在调用时，会做一次 copy，函数内部修改参数值，不会影响到外部的数值
+    /// - inout 关键字，相当于在 OC 中传递对象的地址
+    private func appendToken(inout parameters: [String: AnyObject]?) -> Bool {
+        
+        // 1> 判断 token 是否为nil
+        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+            return false
+        }
+        
+        // 2> 判断参数字典是否有值
+        if parameters == nil {
+            parameters = [String: AnyObject]()
+        }
+        
+        // 3> 设置 token
+        parameters!["access_token"] = token
+        
+        return true
+    }
+    
     /// 使用 token 进行网络请求
     ///
     /// - parameter method:     GET / POST
@@ -170,17 +195,11 @@ extension NetworkTools {
         
         //1. 设置 token 参数
         //判断 token 是否有效
-        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+        if !appendToken(&parameters){
             
             finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]) )
             return
         }
-        //设置parameters字典
-        // 判断参数字典是否有值
-        if parameters == nil {
-            parameters = [String: AnyObject]()
-        }
-        parameters!["access_token"] = token
         //2. 发起网络请求
         request(method, URLString: URLString, parameters: parameters, finished: finished)
     
@@ -218,18 +237,12 @@ extension NetworkTools {
         
         //1. 设置 token 参数
         //判断 token 是否有效
-        guard let token = UserAccountViewModel.sharedUserAccount.accessToken else {
+        if !appendToken(&parameters) {
             
             finished(result: nil, error: NSError(domain: "com.tsuios.error", code: 1024, userInfo: ["message": "token为空"]) )
             return
         }
-        //设置parameters字典
-        // 判断参数字典是否有值
-        if parameters == nil {
-            parameters = [String: AnyObject]()
-        }
-        parameters!["access_token"] = token
-
+    
         POST(URLString, parameters: parameters, constructingBodyWithBlock: { (formData) -> Void in
             
             ///  @param data        要上传文件的二进制数据
