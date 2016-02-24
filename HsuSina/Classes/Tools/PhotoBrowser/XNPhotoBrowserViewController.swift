@@ -127,7 +127,6 @@ private extension XNPhotoBrowserViewController {
     }
 
 }
-
 // MARK: - UICollectionViewDataSource
 extension XNPhotoBrowserViewController: UICollectionViewDataSource {
     
@@ -138,7 +137,7 @@ extension XNPhotoBrowserViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserViewCellId, forIndexPath: indexPath) as! XNPhotoBrowserCell
         
-        cell.backgroundColor = UIColor.grayColor()
+        cell.backgroundColor = UIColor.blackColor()
         
         cell.imageURL = urls[indexPath.item]
         

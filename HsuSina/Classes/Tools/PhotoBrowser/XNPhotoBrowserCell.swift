@@ -22,22 +22,41 @@ class XNPhotoBrowserCell: UICollectionViewCell {
             resetScrollView()
             
             // 从磁盘中加载缩略图的图像
-            imageView.image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(url.absoluteString)
-            // 设置大小
-            imageView.sizeToFit()
+            //会先从磁盘中找,如果没有才走网络加载
+            let placeholderImage = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(url.absoluteString)
+
+            // 设置占位图片
+            setPlaceHolder(placeholderImage)
             
-            //设置中心点
-            imageView.center = scrollView.center
-            // 异步加载大图
-            imageView.sd_setImageWithURL(bmiddleURL(url)) { (image, _, _, _) -> Void in
-                // 设置图像视图的位置
-                self.setPositon(image)
+            imageView.sd_setImageWithURL(bmiddleURL(url),
+                placeholderImage: nil,
+                options: [SDWebImageOptions.RefreshCached,SDWebImageOptions.RetryFailed],
+                progress: { (current, total) -> Void in
+                    
+                }) { (image, _, _, _) -> Void in
+                    self.placeHolder.hidden = true
+                    // 设置图像视图的位置
+                    self.setPositon(image)
             }
-            
         }
+    }
+    ///  设置占位图像内容的视图
+    ///
+    ///  - parameter image: 本地缓存的缩略图,如果下载失败, image 为nil
+    private func setPlaceHolder(image: UIImage?) {
+        
+        self.placeHolder.hidden = false
+        
+        placeHolder.image = image
+        placeHolder.sizeToFit()
+        placeHolder.center = scrollView.center
+    
     }
     ///  重设 scrollView 的内容属性
     private func resetScrollView() {
+        // 重设 imageview 的内容属性
+        imageView.transform = CGAffineTransformIdentity
+        
         scrollView.contentInset = UIEdgeInsetsZero
         scrollView.contentOffset = CGPointZero
         scrollView.contentSize = CGSizeZero
@@ -106,6 +125,7 @@ class XNPhotoBrowserCell: UICollectionViewCell {
         // 1. 添加控件
         contentView.addSubview(scrollView)
         scrollView.addSubview(imageView)
+        scrollView.addSubview(placeHolder)
         
         // 2. 设置位置
         var rect = bounds
@@ -123,6 +143,7 @@ class XNPhotoBrowserCell: UICollectionViewCell {
     // MARK : - 懒加载控件
     private lazy var scrollView: UIScrollView = UIScrollView()
     private lazy var imageView: UIImageView = UIImageView()
+    private lazy var placeHolder: UIImageView = UIImageView()
 }
 
 // MARK: - UIScrollViewDelegate
