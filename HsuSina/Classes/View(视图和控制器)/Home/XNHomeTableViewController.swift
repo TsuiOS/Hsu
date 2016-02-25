@@ -69,13 +69,23 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         
         //预估行高
         tableView.estimatedRowHeight = 400
+        
+        // 下拉刷新控件默认没有
+        refreshControl = UIRefreshControl()
+        
+        //添加监听方法
+        refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
     
     }
     
+    
     ///  加载数据
-    private func loadData() {
+    @objc private func loadData() {
         
         listViewModel.loadStatus { (isSuccessed) -> () in
+            
+            // 关闭刷新控件
+            self.refreshControl?.endRefreshing()
             if !isSuccessed {
                 SVProgressHUD.showInfoWithStatus("数据加载失败,请稍后再试")
                 return
