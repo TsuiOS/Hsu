@@ -71,10 +71,12 @@ class XNHomeTableViewController: XNVisitorTableViewController {
         tableView.estimatedRowHeight = 400
         
         // 下拉刷新控件默认没有
-        refreshControl = UIRefreshControl()
+        refreshControl = XNRefreshControl()
         
         //添加监听方法
         refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
+        // 测试代码
+        refreshControl?.tintColor = UIColor.clearColor()
     
     }
     
@@ -86,6 +88,7 @@ class XNHomeTableViewController: XNVisitorTableViewController {
             
             // 关闭刷新控件
             self.refreshControl?.endRefreshing()
+            
             if !isSuccessed {
                 SVProgressHUD.showInfoWithStatus("数据加载失败,请稍后再试")
                 return
